@@ -28,9 +28,18 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 5. Critical infra: OpenSSF criticality ≥ 0.4  
 6. Soft: apply anyway if the ecosystem quietly depends on your work  
 
+## Start here (drafted PRs)
+
+Ready-to-submit drafts live in [`drafts/`](./drafts/README.md):
+
+1. First Contributions (warmup)
+2. `abatef/json.ts#11` — `childern` → `children`
+3. `TryCaspian/caspian-sdk#11` — stale test counts
+4. `TryCaspian/caspian-sdk#16` — remove stale `list_connections()` docs
+
 ## Daily loop
 
-1. Pick a target from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+1. Finish the drafted PRs above, then pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
 2. Filter issues: labeled, recently touched, not already claimed, maintainer active.
 3. Comment “I’d like to take this” → wait for a nod when the project expects it.
 4. Ship a **small** PR (docs/typo/test/bugfix). One concern per PR.
