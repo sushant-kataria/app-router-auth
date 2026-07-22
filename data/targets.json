@@ -1,0 +1,82 @@
+[
+  {
+    "name": "freeCodeCamp",
+    "repo": "freeCodeCamp/freeCodeCamp",
+    "why": "Huge volume of first-timer issues; docs and curriculum PRs merge often",
+    "labels": ["first-timers-only", "help wanted"],
+    "stack": ["JS", "TS", "docs"],
+    "findIssues": "https://github.com/freeCodeCamp/freeCodeCamp/issues?q=is%3Aissue+is%3Aopen+label%3A%22first+timers+only%22"
+  },
+  {
+    "name": "First Contributions",
+    "repo": "firstcontributions/first-contributions",
+    "why": "Purpose-built for landing an early merged PR and learning the workflow",
+    "labels": ["good first issue"],
+    "stack": ["git", "docs"],
+    "findIssues": "https://github.com/firstcontributions/first-contributions"
+  },
+  {
+    "name": "Awesome for Beginners",
+    "repo": "MunGell/awesome-for-beginners",
+    "why": "Curated map of beginner-friendly projects across languages",
+    "labels": ["n/a — index"],
+    "stack": ["meta"],
+    "findIssues": "https://github.com/MunGell/awesome-for-beginners"
+  },
+  {
+    "name": "Next.js",
+    "repo": "vercel/next.js",
+    "why": "Matches common web stacks; docs and example fixes are approachable",
+    "labels": ["good first issue", "Documentation"],
+    "stack": ["TS", "React", "docs"],
+    "findIssues": "https://github.com/vercel/next.js/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+  },
+  {
+    "name": "Nuxt",
+    "repo": "nuxt/nuxt",
+    "why": "Active maintainers; docs/examples often welcome small PRs",
+    "labels": ["good first issue"],
+    "stack": ["TS", "Vue", "docs"],
+    "findIssues": "https://github.com/nuxt/nuxt/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+  },
+  {
+    "name": "Grafana",
+    "repo": "grafana/grafana",
+    "why": "Many labeled starter issues; UI/docs fixes ship regularly",
+    "labels": ["good first issue", "type/docs"],
+    "stack": ["TS", "Go", "docs"],
+    "findIssues": "https://github.com/grafana/grafana/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+  },
+  {
+    "name": "Home Assistant Core",
+    "repo": "home-assistant/core",
+    "why": "Very active; integrations and docs give steady merge opportunities",
+    "labels": ["good-first-issue"],
+    "stack": ["Python", "docs"],
+    "findIssues": "https://github.com/home-assistant/core/issues?q=is%3Aissue+is%3Aopen+label%3Agood-first-issue"
+  },
+  {
+    "name": "Scrapy",
+    "repo": "scrapy/scrapy",
+    "why": "Smaller than mega-repos; careful docs/bugfix PRs get attention",
+    "labels": ["good first issue"],
+    "stack": ["Python"],
+    "findIssues": "https://github.com/scrapy/scrapy/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+  },
+  {
+    "name": "Appwrite",
+    "repo": "appwrite/appwrite",
+    "why": "Product-oriented OSS with frequent community PRs",
+    "labels": ["good first issue"],
+    "stack": ["TS", "PHP", "docs"],
+    "findIssues": "https://github.com/appwrite/appwrite/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+  },
+  {
+    "name": "Hoppscotch",
+    "repo": "hoppscotch/hoppscotch",
+    "why": "API-dev tool; UI polish and docs are common entry points",
+    "labels": ["good first issue"],
+    "stack": ["TS", "Vue"],
+    "findIssues": "https://github.com/hoppscotch/hoppscotch/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"
+  }
+]

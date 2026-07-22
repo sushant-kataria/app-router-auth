@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Grantpath
 
-## Getting Started
+Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 months Claude Max 20x) and OpenAI’s **Codex for Open Source** (6 months ChatGPT Pro + Codex) when you have **no prior OSS history**.
 
-First, run the development server:
+> Clearing a demo repo does not qualify you. These programs reward real contribution impact.
+
+## The strategy (do this)
+
+| Priority | Action | Why |
+|----------|--------|-----|
+| **1 — Speed path** | Land **100 merged PRs** in repos **you do not own** (last 12 months) | Official Anthropic **Active contributors** track |
+| **2 — Parallel** | Maintain this public MIT project with a clear README + ongoing commits | Gives OpenAI a primary-maintainer story |
+| **3 — Apply** | Anthropic at ~100 external merges; OpenAI once the maintainer story is real | Both programs accept rolling applications |
+
+**Do not** chase: fake stars, download bots, or empty “critical infrastructure” claims. That burns the application.
+
+## Official links
+
+- Anthropic: [claude.com/open-source-max](https://claude.com/open-source-max)
+- OpenAI: [openai.com/form/codex-for-oss](https://openai.com/form/codex-for-oss/)
+
+### Anthropic tracks (summary)
+
+1. Maintainer/library: 500+ dependent repos **or** 100+ dependent packages **or** 200k+ monthly downloads  
+2. Core contributor on major foundation projects  
+3. **Active contributor: 100+ merged PRs to repos you don’t own (12 months)** ← your main target  
+4. Community builder: 20+ unique external contributors on one of your repos  
+5. Critical infra: OpenSSF criticality ≥ 0.4  
+6. Soft: apply anyway if the ecosystem quietly depends on your work  
+
+## Daily loop
+
+1. Pick a target from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+2. Filter issues: labeled, recently touched, not already claimed, maintainer active.
+3. Comment “I’d like to take this” → wait for a nod when the project expects it.
+4. Ship a **small** PR (docs/typo/test/bugfix). One concern per PR.
+5. Respond to review the same day when you can.
+6. Log the merge in [`data/progress.json`](./data/progress.json).
+
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # local Grantpath site
+npm run count-prs    # count merged external PRs (last 12 months)
+npm run progress     # refresh data/progress.json from GitHub Search API
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Optional: set `GITHUB_TOKEN` (or `GH_TOKEN`) for higher API rate limits.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+GITHUB_TOKEN=ghp_... npm run count-prs
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Apply packets
 
-## Learn More
+- [`apply/anthropic-draft.md`](./apply/anthropic-draft.md)
+- [`apply/openai-draft.md`](./apply/openai-draft.md)
 
-To learn more about Next.js, take a look at the following resources:
+Fill these only with **true** metrics from `npm run count-prs`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What “as soon as possible” really means
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+With no history, the bottleneck is **merged external PR volume**, not rewriting this repository. Treat contribution like a job: several small, mergeable PRs in flight across a few active repos. When `count-prs` shows ≥100, submit Anthropic immediately. Use this repo’s maintainer story for OpenAI once it is more than a blank template.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+MIT
