@@ -18,7 +18,12 @@ need() { command -v "$1" >/dev/null || { echo "Missing dependency: $1"; exit 1; 
 need git
 need gh
 
-ACTIVE="$(gh api user --jq .login)"
+ACTIVE="$(gh api user --jq .login 2>/dev/null || true)"
+if [[ -z "$ACTIVE" ]]; then
+  echo "Could not read GitHub user (token missing user scope)."
+  echo "On your laptop run: gh auth login  (as $USER_LOGIN), then re-run this script."
+  exit 1
+fi
 if [[ "$ACTIVE" != "$USER_LOGIN" ]]; then
   echo "gh is logged in as '$ACTIVE', expected '$USER_LOGIN'."
   echo "Run: gh auth login"
