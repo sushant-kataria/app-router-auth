@@ -1,40 +1,37 @@
 # Draft PR pack
 
-Your GitHub: **sushant-kataria** · Display name: **Sushant Kataria**
+Your GitHub: **sushant-kataria**
 
-## Status (2026-07-25)
+## Bot reviews (FAQ)
 
-| Result | Detail |
-|--------|--------|
-| Merged external | **1** — `firstcontributions/first-contributions#121803` |
-| Open external | `abatef/json.ts#17`, `escoffier-labs/cloche#26`, `Avenx-JS/avenx-js#625` |
-| Counter | `1 / 100` Anthropic active-contributor track |
+**No — not “your” bot on every PR.**  
+CodeRabbit (and similar) only runs on repos where **that project’s maintainers** installed it.  
+- On [cloche#26](https://github.com/escoffier-labs/cloche/pull/26) you saw **their** CodeRabbit.  
+- It does **not** auto-review every PR you open elsewhere unless that repo has the app.  
+- On your own repos, a bot reviews only if **you** install/configure it.
 
-Own-repo PRs do **not** count. After each merge: `npm run count-prs`.
+## Status
 
-## Run next two replacements (caspian substitutes)
+| | |
+|--|--|
+| Merged external | **1** |
+| Open (batch 1–2) | json.ts#17 · cloche#26 · avenx-js#625 |
+| Next batch | run script below |
+
+## Open next batch (3 PRs)
 
 ```bash
 cd app-router-auth
 git fetch origin && git checkout cursor/oss-grant-path-ba5d && git pull
-bash scripts/submit-next-prs.sh
+bash scripts/submit-batch3-prs.sh
 ```
 
-| # | Repo | Issue | Draft |
-|---|------|-------|-------|
-| 5 | [escoffier-labs/cloche#24](https://github.com/escoffier-labs/cloche/issues/24) | License badge MIT → Apache-2.0 | [`05-cloche-license-badge.md`](./05-cloche-license-badge.md) |
-| 6 | [Avenx-JS/avenx-js#618](https://github.com/Avenx-JS/avenx-js/issues/618) | Docs `Maps(hash)` → `navigate(hash)` | [`06-avenx-navigate-typo.md`](./06-avenx-navigate-typo.md) |
-
-Both were unclaimed with **no competing PRs** when drafted — claim/submit soon.
-
-## Earlier drafts
-
-| # | Draft | Notes |
+| # | Issue | Draft |
 |---|-------|-------|
-| 1 | [`01-first-contributions.md`](./01-first-contributions.md) | ✅ merged |
-| 2 | [`02-json-ts-childern.md`](./02-json-ts-childern.md) | open as json.ts#17 |
-| 3–4 | caspian-sdk | blocked — use 5–6 instead |
+| 7 | [osk-frontend#277](https://github.com/Open-Source-Kigali/osk-frontend/issues/277) alt typo | [`07-osk-footer-alt.md`](./07-osk-footer-alt.md) |
+| 8 | [sharibo#55](https://github.com/crackedstudio/sharibo/issues/55) rename Sharabo→Sharibo | [`08-sharibo-rename.md`](./08-sharibo-rename.md) |
+| 9 | [sharibo#6](https://github.com/crackedstudio/sharibo/issues/6) broken demo.gif | [`09-sharibo-broken-gif.md`](./09-sharibo-broken-gif.md) |
 
-```bash
-npm run count-prs   # after merges
-```
+Skipped: eventradar#36 (already fixed in code), Nevo#970 (competing PR), caspian (closed).
+
+After merges: `npm run count-prs`
