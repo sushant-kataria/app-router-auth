@@ -4,7 +4,7 @@
     "anthropicMergedExternalPrs": 100,
     "openai": "primary-or-core-maintainer-of-public-used-project"
   },
-  "mergedExternalPrs": 0,
+  "mergedExternalPrs": 1,
   "applications": {
     "anthropic": { "status": "not-ready", "url": "https://claude.com/open-source-max" },
     "openai": { "status": "not-ready", "url": "https://openai.com/form/codex-for-oss/" }

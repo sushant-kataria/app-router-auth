@@ -7,11 +7,10 @@ Your GitHub: **sushant-kataria** · Display name: **Sushant Kataria**
 | Result | Detail |
 |--------|--------|
 | Merged external | **1** — `firstcontributions/first-contributions#121803` |
-| Open external | `abatef/json.ts#17` (mergeable) |
-| Blocked | caspian-sdk #11/#16 (not opened) |
+| Open external | `abatef/json.ts#17`, `escoffier-labs/cloche#26`, `Avenx-JS/avenx-js#625` |
 | Counter | `1 / 100` Anthropic active-contributor track |
 
-Own-repo PRs do **not** count.
+Own-repo PRs do **not** count. After each merge: `npm run count-prs`.
 
 ## Run next two replacements (caspian substitutes)
 
