@@ -1,32 +1,41 @@
-# Draft PR pack — do these in order
+# Draft PR pack
 
 Your GitHub: **sushant-kataria** · Display name: **Sushant Kataria**
 
-## Fastest path (recommended)
+## Status (2026-07-25)
 
-From your own machine (must be logged in as you):
+| Result | Detail |
+|--------|--------|
+| Merged external | **1** — `firstcontributions/first-contributions#121803` |
+| Open external | `abatef/json.ts#17` (mergeable) |
+| Blocked | caspian-sdk #11/#16 (not opened) |
+| Counter | `1 / 100` Anthropic active-contributor track |
+
+Own-repo PRs do **not** count.
+
+## Run next two replacements (caspian substitutes)
 
 ```bash
-gh auth login          # choose GitHub.com → sushant-kataria
-git clone https://github.com/sushant-kataria/app-router-auth.git
 cd app-router-auth
-git checkout cursor/oss-grant-path-ba5d   # or main after merge
-bash scripts/submit-first-prs.sh
+git fetch origin && git checkout cursor/oss-grant-path-ba5d && git pull
+bash scripts/submit-next-prs.sh
 ```
 
-That script claims the issues, forks, commits, and opens all 4 PRs under **your** account (required for Anthropic’s `author:sushant-kataria` count).
+| # | Repo | Issue | Draft |
+|---|------|-------|-------|
+| 5 | [escoffier-labs/cloche#24](https://github.com/escoffier-labs/cloche/issues/24) | License badge MIT → Apache-2.0 | [`05-cloche-license-badge.md`](./05-cloche-license-badge.md) |
+| 6 | [Avenx-JS/avenx-js#618](https://github.com/Avenx-JS/avenx-js/issues/618) | Docs `Maps(hash)` → `navigate(hash)` | [`06-avenx-navigate-typo.md`](./06-avenx-navigate-typo.md) |
 
-| # | Repo | Issue | Status | Why |
-|---|------|-------|--------|-----|
-| 1 | [firstcontributions/first-contributions](https://github.com/firstcontributions/first-contributions) | (no issue — add your name) | Ready | Learns fork→PR workflow; almost always merges |
-| 2 | [abatef/json.ts#11](https://github.com/abatef/json.ts/issues/11) | Typo `childern`→`children` | **Unclaimed, 0 PRs** | Tiny real code/docs-adjacent fix |
-| 3 | [TryCaspian/caspian-sdk#11](https://github.com/TryCaspian/caspian-sdk/issues/11) | Stale test counts in READMEs | **Unclaimed, 0 PRs** | Real docs PR on an active SDK |
-| 4 (next) | [TryCaspian/caspian-sdk#16](https://github.com/TryCaspian/caspian-sdk/issues/16) | Stale `list_connections()` docs | **Unclaimed, 0 PRs** | Follow-up after #11 |
+Both were unclaimed with **no competing PRs** when drafted — claim/submit soon.
 
-Manual step-by-step versions of each PR are in the files below if you prefer not to use the script.
+## Earlier drafts
 
-After each merge, run from Grantpath:
+| # | Draft | Notes |
+|---|-------|-------|
+| 1 | [`01-first-contributions.md`](./01-first-contributions.md) | ✅ merged |
+| 2 | [`02-json-ts-childern.md`](./02-json-ts-childern.md) | open as json.ts#17 |
+| 3–4 | caspian-sdk | blocked — use 5–6 instead |
 
 ```bash
-npm run count-prs
+npm run count-prs   # after merges
 ```
