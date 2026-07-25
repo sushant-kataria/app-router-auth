@@ -8,7 +8,7 @@
 - `packages/contracts/contracts/linkora-contracts/src/tests/mod.rs`
 - `packages/contracts/contracts/linkora-contracts/src/tests/set_profile_tests.rs`
 
-**Status when drafted:** open, unassigned, no competing PR (Stellar Wave applicants commented — still ship if unassigned)
+**Status:** **SKIPPED** — assigned to @morelucks; issue closed before submit. Do not open a competing PR.
 
 ## Claim
 

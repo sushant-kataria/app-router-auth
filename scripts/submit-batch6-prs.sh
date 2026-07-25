@@ -1,15 +1,40 @@
 #!/usr/bin/env bash
 # Batch 6 — higher-impact external PRs (code / packaging, not typo docs)
 #   bash scripts/submit-batch6-prs.sh
+#
+# Windows/Git Bash notes:
+# - Uses git clone (not `gh repo clone`) to avoid path bugs under MSYS.
+# - Workdir defaults under $HOME/.cache on Windows-like shells.
+# - Python patches normalize CRLF/NUL via scripts/textio_bootstrap.py.
+#
+# Status: Nevo / c-text-editor / nl6 already submitted; Linkora skipped (assigned).
+# Re-running is safe — skips assigned issues and existing open PR heads.
 set -euo pipefail
 
 USER_LOGIN="${GITHUB_USER:-sushant-kataria}"
-WORKDIR="${TMPDIR:-/tmp}/grantpath-batch6-$$"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Prefer a home-cache workdir on Windows (MSYS/MINGW/Cygwin); /tmp pathing breaks gh/git there.
+_uname="$(uname -s 2>/dev/null || echo unknown)"
+if [[ -n "${LOCALAPPDATA:-}" || "$_uname" == MINGW* || "$_uname" == MSYS* || "$_uname" == CYGWIN* ]]; then
+  WORKDIR="${GRANTPATH_WORKDIR:-$HOME/.cache/grantpath-batch6-$$}"
+else
+  WORKDIR="${GRANTPATH_WORKDIR:-${TMPDIR:-/tmp}/grantpath-batch6-$$}"
+fi
 mkdir -p "$WORKDIR"
 trap 'rm -rf "$WORKDIR"' EXIT
 
 need() { command -v "$1" >/dev/null || { echo "Missing: $1"; exit 1; }; }
 need git; need gh; need python3
+
+# Run a patch with CRLF/NUL-normalized Path.read_text / write_text.
+run_python_patch() {
+  {
+    cat "$SCRIPT_DIR/textio_bootstrap.py"
+    echo
+    cat
+  } | python3 -
+}
 
 ACTIVE="$(gh api user --jq .login 2>/dev/null || true)"
 if [[ -z "$ACTIVE" || "$ACTIVE" != "$USER_LOGIN" ]]; then
@@ -29,7 +54,12 @@ claim_issue() {
 
 skip_if_assigned_elsewhere() {
   local repo="$1" number="$2"
-  local assignee
+  local assignee state
+  state="$(gh api "repos/$repo/issues/$number" --jq .state)"
+  if [[ "$state" == "closed" ]]; then
+    echo "SKIP $repo#$number — issue is closed"
+    return 1
+  fi
   assignee="$(gh api "repos/$repo/issues/$number" --jq '.assignees[0].login // empty')"
   if [[ -n "$assignee" && "$assignee" != "$USER_LOGIN" ]]; then
     echo "SKIP $repo#$number — already assigned to @$assignee"
@@ -48,7 +78,8 @@ fork_and_clone() {
     sleep 2
   done
   rm -rf "$WORKDIR/$name"
-  gh repo clone "$USER_LOGIN/$name" "$WORKDIR/$name" -- --depth=50
+  # git clone is more reliable than `gh repo clone` on Windows/MSYS pathing.
+  git clone --depth=50 "https://github.com/$USER_LOGIN/$name.git" "$WORKDIR/$name"
   (
     cd "$WORKDIR/$name"
     git remote add upstream "https://github.com/$upstream.git" 2>/dev/null || true
@@ -57,7 +88,8 @@ fork_and_clone() {
 }
 
 echo "==> Authenticated as $ACTIVE"
-echo "==> Batch 6 targets: Linkora#941, Nevo#860, c-text-editor#3, nl6#342"
+echo "==> Batch 6 targets: Linkora#941 (likely skip), Nevo#860, c-text-editor#3, nl6#342"
+echo "==> Workdir: $WORKDIR"
 
 ########################################
 # 16) Linkora-social #941
@@ -71,7 +103,7 @@ fork_and_clone "Epta-Node/Linkora-social"
   cd "$WORKDIR/Linkora-social"
   DEFAULT="$(gh api repos/Epta-Node/Linkora-social --jq .default_branch)"
   git checkout -B "fix/username-min-length" "upstream/$DEFAULT"
-  python3 - <<'PY'
+  run_python_patch <<'PY'
 from pathlib import Path
 
 # 1) validation.rs
@@ -254,7 +286,7 @@ fork_and_clone "Web3Novalabs/Nevo"
   cd "$WORKDIR/Nevo"
   DEFAULT="$(gh api repos/Web3Novalabs/Nevo --jq .default_branch)"
   git checkout -B "fix/poolcard-remove-mock-donors" "upstream/$DEFAULT"
-  python3 - <<'PY'
+  run_python_patch <<'PY'
 from pathlib import Path
 path = Path("nevo_frontend/components/PoolCard.tsx")
 text = path.read_text(encoding="utf-8")
@@ -344,7 +376,7 @@ fork_and_clone "andrewthecodertx/c-text-editor"
   cd "$WORKDIR/c-text-editor"
   DEFAULT="$(gh api repos/andrewthecodertx/c-text-editor --jq .default_branch)"
   git checkout -B "fix/growable-prompt-buffer" "upstream/$DEFAULT"
-  python3 - <<'PY'
+  run_python_patch <<'PY'
 from pathlib import Path
 path = Path("ui.c")
 text = path.read_text(encoding="utf-8")
@@ -499,7 +531,7 @@ fork_and_clone "labmonkeys-space/nl6"
   cd "$WORKDIR/nl6"
   DEFAULT="$(gh api repos/labmonkeys-space/nl6 --jq .default_branch)"
   git checkout -B "fix/deb-copyright-file" "upstream/$DEFAULT"
-  python3 - <<'PY'
+  run_python_patch <<'PY'
 from pathlib import Path
 
 nfpm = Path("deploy/packages/nfpm.yaml")

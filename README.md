@@ -32,20 +32,16 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
-**Next: Batch 6 (higher-impact code/packaging)** — run locally after `gh auth login`:
+**Batch 6 submitted** (higher-impact code/packaging):
 
-```bash
-bash scripts/submit-batch6-prs.sh
-```
+| # | PR | Status |
+|---|-----|--------|
+| 16 | Linkora-social#941 | Skipped (assigned elsewhere) |
+| 17 | [Nevo#988](https://github.com/Web3Novalabs/Nevo/pull/988) | Open |
+| 18 | [c-text-editor#22](https://github.com/andrewthecodertx/c-text-editor/pull/22) | Open |
+| 19 | [nl6#345](https://github.com/labmonkeys-space/nl6/pull/345) | Open |
 
-| # | Target | Kind |
-|---|--------|------|
-| 16 | Linkora-social#941 | Smart-contract username min length + tests |
-| 17 | Nevo#860 | Remove mock donor counts from PoolCard |
-| 18 | c-text-editor#3 | Growable prompt buffer (critical) |
-| 19 | nl6#342 | Debian `.deb` copyright / SBOM license |
-
-Earlier batches (1–5) were smaller docs/typo warmups; keep reviewing those opens while Batch 6 lands.
+Merged external: **4 / 100**. Watch reviews on open PRs; next batch when some merge.
 
 ## Daily loop
 

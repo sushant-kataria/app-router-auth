@@ -1,34 +1,31 @@
 # Draft PR pack
 
 ## Status
-- Merged external: **2 / 100**
-- Several open from batches 1–5 (mostly docs)
+- Merged external: **4 / 100** (4%)
+- Batch 6 submitted (3/4 — Linkora skipped)
 
-## Batch 6 — higher-impact (run locally)
+## Batch 6 — submitted
 
-These are **code/packaging** fixes, not typo docs. Prefer merging these for stronger contribution signal.
+| # | Issue → PR | Status |
+|---|------------|--------|
+| 16 | Linkora-social#941 | **Skipped** — assigned to @morelucks; issue closed |
+| 17 | [Nevo#988](https://github.com/Web3Novalabs/Nevo/pull/988) | Open — remove mock donor counts |
+| 18 | [c-text-editor#22](https://github.com/andrewthecodertx/c-text-editor/pull/22) | Open — growable prompt buffer |
+| 19 | [nl6#345](https://github.com/labmonkeys-space/nl6/pull/345) | Open — Debian copyright in `.deb` |
 
-```bash
-cd /c/grantpath-work/app-router-auth
-git fetch origin && git checkout cursor/oss-grant-path-ba5d && git pull
-bash scripts/submit-batch6-prs.sh
-```
+Submitted locally via flat runner (Windows: original `submit-batch6-prs.sh` hit `gh clone` path + CRLF match issues; script hardened afterward for next batches).
 
-| # | Issue | Why it matters | Draft |
-|---|-------|----------------|-------|
-| 16 | [Linkora-social#941](https://github.com/Epta-Node/Linkora-social/issues/941) | Smart-contract username min-length + wire orphaned tests | [`16-linkora-username-min-length.md`](./16-linkora-username-min-length.md) |
-| 17 | [Nevo#860](https://github.com/Web3Novalabs/Nevo/issues/860) | Remove fake donor counts from production UI | [`17-nevo-poolcard-donor-count.md`](./17-nevo-poolcard-donor-count.md) |
-| 18 | [c-text-editor#3](https://github.com/andrewthecodertx/c-text-editor/issues/3) | Critical: growable prompt buffer (was truncating at 128) | [`18-ctext-growable-prompt.md`](./18-ctext-growable-prompt.md) |
-| 19 | [nl6#342](https://github.com/labmonkeys-space/nl6/issues/342) | Debian Policy copyright file + SBOM license fix | [`19-nl6-deb-copyright.md`](./19-nl6-deb-copyright.md) |
+## Still open from earlier batches
 
-**Note:** Linkora#941 has Stellar Wave applicants but was unassigned with no PR when drafted. The script skips if someone else gets assigned first.
+| PR | Notes |
+|----|-------|
+| [E-vara#237](https://github.com/SHAURYASANYAL3/E-vara/pull/237) | **APPROVED** — waiting on merge |
+| [osk-frontend#290](https://github.com/Open-Source-Kigali/osk-frontend/pull/290) | Open |
+| [sharibo#127](https://github.com/crackedstudio/sharibo/pull/127) / [#128](https://github.com/crackedstudio/sharibo/pull/128) | Open |
+| [TSIA2Math#33](https://github.com/jd-oviedo/TSIA2Math/pull/33) | Open |
+| [triageiq#24](https://github.com/SakethSumanBathini/triageiq/pull/24) | Open |
+| [sanjeevani-landing#7](https://github.com/Sanjeevaniai-in/sanjeevani-landing-page/pull/7) | Open |
+| [sanjeevani-mobile#10](https://github.com/Sanjeevaniai-in/sanjeevani-mobile-apps/pull/10) | Open |
+| [sanjeevani-core-backend#17](https://github.com/Sanjeevaniai-in/sanjeevani-core-backend/pull/17) | Open |
 
-## Batch 5 (already submitted if you ran it)
-
-| # | Issue | Draft |
-|---|-------|-------|
-| 13 | [E-vara#184](https://github.com/SHAURYASANYAL3/E-vara/issues/184) | [`13-evara-readme-setup.md`](./13-evara-readme-setup.md) |
-| 14 | [sanjeevani-mobile-apps#2](https://github.com/Sanjeevaniai-in/sanjeevani-mobile-apps/issues/2) | [`14-sanjeevani-mobile-docs.md`](./14-sanjeevani-mobile-docs.md) |
-| 15 | [sanjeevani-core-backend#2](https://github.com/Sanjeevaniai-in/sanjeevani-core-backend/issues/2) | [`15-sanjeevani-backend-contributing.md`](./15-sanjeevani-backend-contributing.md) |
-
-After merges: `npm run count-prs`
+After merges: `npm run count-prs` / `npm run progress`
