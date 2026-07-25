@@ -30,20 +30,30 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 ## Start here (drafted PRs)
 
-Ready-to-submit drafts live in [`drafts/`](./drafts/README.md):
+Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
-1. First Contributions (warmup)
-2. `abatef/json.ts#11` — `childern` → `children`
-3. `TryCaspian/caspian-sdk#11` — stale test counts
-4. `TryCaspian/caspian-sdk#16` — remove stale `list_connections()` docs
+**Next: Batch 6 (higher-impact code/packaging)** — run locally after `gh auth login`:
+
+```bash
+bash scripts/submit-batch6-prs.sh
+```
+
+| # | Target | Kind |
+|---|--------|------|
+| 16 | Linkora-social#941 | Smart-contract username min length + tests |
+| 17 | Nevo#860 | Remove mock donor counts from PoolCard |
+| 18 | c-text-editor#3 | Growable prompt buffer (critical) |
+| 19 | nl6#342 | Debian `.deb` copyright / SBOM license |
+
+Earlier batches (1–5) were smaller docs/typo warmups; keep reviewing those opens while Batch 6 lands.
 
 ## Daily loop
 
-1. Finish the drafted PRs above, then pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
-2. Filter issues: labeled, recently touched, not already claimed, maintainer active.
-3. Comment “I’d like to take this” → wait for a nod when the project expects it.
-4. Ship a **small** PR (docs/typo/test/bugfix). One concern per PR.
-5. Respond to review the same day when you can.
+1. Submit Batch 6, then pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
+3. Filter issues: labeled, recently touched, not already claimed, maintainer active.
+4. Comment “I’d like to take this” → wait for a nod when the project expects it.
+5. One concern per PR. Respond to review the same day when you can.
 6. Log the merge in [`data/progress.json`](./data/progress.json).
 
 ## Commands
