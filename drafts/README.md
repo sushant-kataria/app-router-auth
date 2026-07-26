@@ -29,3 +29,13 @@ Submitted locally via flat runner (Windows: original `submit-batch6-prs.sh` hit 
 | [sanjeevani-core-backend#17](https://github.com/Sanjeevaniai-in/sanjeevani-core-backend/pull/17) | Open |
 
 After merges: `npm run count-prs` / `npm run progress`
+
+## Portfolio polish (owned repos)
+
+Presentable READMEs + finish unfinished owned projects (hushvoice stub, boilerplate Next homes, etc.):
+
+```bash
+bash scripts/polish-owned-repos.sh
+```
+
+See [`portfolio-polish/README.md`](../portfolio-polish/README.md).

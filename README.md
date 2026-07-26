@@ -43,6 +43,17 @@ Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
 Merged external: **4 / 100**. Watch reviews on open PRs; next batch when some merge.
 
+## Portfolio polish (owned repos)
+
+Cloud agents cannot push to your other repos. To make owned projects presentable (READMEs, env examples, finish hushvoice stub):
+
+```bash
+gh auth login   # sushant-kataria
+bash scripts/polish-owned-repos.sh
+```
+
+Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
+
 ## Daily loop
 
 1. Submit Batch 6, then pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
