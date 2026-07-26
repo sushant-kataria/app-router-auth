@@ -1,8 +1,9 @@
 # Draft PR pack
 
 ## Status
-- Merged external: **4 / 100** (4%)
-- Batch 6 submitted (3/4 — Linkora skipped)
+- Merged external: **5 / 100** (5%) — Nevo#988 merged
+- Batch 6: Nevo merged; c-text-editor#22 + nl6#345 still open; Linkora skipped
+- Portfolio polish applied; hushvoice PR #1 merged; owned-repo polish PRs open (merge when ready)
 
 ## Batch 6 — submitted
 
