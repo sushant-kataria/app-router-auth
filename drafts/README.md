@@ -1,9 +1,28 @@
 # Draft PR pack
 
 ## Status
-- Merged external: **5 / 100** (5%) — Nevo#988 merged
+- Merged external: **7 / 100** (7%) — sharibo×2 + Nevo merged
 - Batch 6: Nevo merged; c-text-editor#22 + nl6#345 still open; Linkora skipped
 - Portfolio polish applied; hushvoice PR #1 merged; owned-repo polish PRs open (merge when ready)
+
+
+## Batch 7 — run locally (higher-signal)
+
+```bash
+cd /c/grantpath-work/app-router-auth
+git fetch origin && git checkout cursor/oss-grant-path-ba5d && git pull
+bash scripts/submit-batch7-prs.sh
+```
+
+| # | Issue | Why | Draft |
+|---|-------|-----|-------|
+| 20 | [synapse-core#1012](https://github.com/Synapse-bridgez/synapse-core/issues/1012) | Dev seed always no-ops (`${DATABASE_URL}` literal) | [`20-synapse-seed-database-url.md`](./20-synapse-seed-database-url.md) |
+| 21 | [c-text-editor#8](https://github.com/andrewthecodertx/c-text-editor/issues/8) + [#17](https://github.com/andrewthecodertx/c-text-editor/issues/17) | Undo memory leak + empty `editor_actions` | [`21-ctext-undo-leak.md`](./21-ctext-undo-leak.md) |
+| 22 | [triageiq#22](https://github.com/SakethSumanBathini/triageiq/issues/22) | CORS still `*` despite `CORS_ORIGINS` | [`22-triageiq-cors-origins.md`](./22-triageiq-cors-origins.md) |
+| 23 | [osk-frontend#279](https://github.com/Open-Source-Kigali/osk-frontend/issues/279) | Broken Footer `/events` + dead Blog link | [`23-osk-footer-routes.md`](./23-osk-footer-routes.md) |
+| 24 | [nl6#343](https://github.com/labmonkeys-space/nl6/issues/343) | Silent `gh attestation verify` in release docs | [`24-nl6-attestation-docs.md`](./24-nl6-attestation-docs.md) |
+
+**Skip:** Synapse#1002 (claim comments), osk#278 (PR already open).
 
 ## Batch 6 — submitted
 

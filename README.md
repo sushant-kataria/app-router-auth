@@ -32,6 +32,22 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
+**Next: Batch 7** — run locally:
+
+```bash
+bash scripts/submit-batch7-prs.sh
+```
+
+| # | Target | Kind |
+|---|--------|------|
+| 20 | synapse-core#1012 | xtask seed DATABASE_URL never expanded |
+| 21 | c-text-editor#8+#17 | Undo leak + implement editor_actions |
+| 22 | triageiq#22 | CORS allowlist actually enforced |
+| 23 | osk-frontend#279 | Footer route fixes |
+| 24 | nl6#343 | Reliable attestation verify docs |
+
+Merged external: **7 / 100**.
+
 **Batch 6 submitted** (higher-impact code/packaging):
 
 | # | PR | Status |
