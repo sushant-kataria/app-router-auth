@@ -4,7 +4,7 @@
     "anthropicMergedExternalPrs": 100,
     "openai": "primary-or-core-maintainer-of-public-used-project"
   },
-  "mergedExternalPrs": 4,
+  "mergedExternalPrs": 5,
   "applications": {
     "anthropic": {
       "status": "not-ready",
@@ -16,5 +16,5 @@
     }
   },
   "log": [],
-  "lastCountedAt": "2026-07-25T19:03:11.988Z"
+  "lastCountedAt": "2026-07-26T03:25:34.909Z"
 }
