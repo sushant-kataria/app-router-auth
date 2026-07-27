@@ -32,28 +32,21 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
-**Batch 9 ready** — major-company / high-impact (Microsoft, HashiCorp, Elastic):
+**Batch 9 submitted** (4/5 — Kibana not opened):
 
-```bash
-bash scripts/submit-batch9-prs.sh   # already gh auth as sushant-kataria
-```
+| # | PR | Status |
+|---|-----|--------|
+| 30 | [PowerToys#49511](https://github.com/microsoft/PowerToys/pull/49511) | Open — CLA ✅ |
+| 31 | [PowerToys#49512](https://github.com/microsoft/PowerToys/pull/49512) | Open — CLA ✅ |
+| 32 | [Vault#32050](https://github.com/hashicorp/vault/pull/32050) | Open — CLA ✅ |
+| 34 | [azurerm#32879](https://github.com/hashicorp/terraform-provider-azurerm/pull/32879) | Open |
 
-| # | Company | Issue | Impact |
-|---|---------|-------|--------|
-| 30 | Microsoft | [PowerToys#46401](https://github.com/microsoft/PowerToys/issues/46401) | P0 ProviderContext contamination |
-| 31 | Microsoft | [PowerToys#49183](https://github.com/microsoft/PowerToys/issues/49183) | Indexer Peek never opens |
-| 32 | HashiCorp | [Vault#31852](https://github.com/hashicorp/vault/issues/31852) | UI scroll locks after delete |
-| 33 | Elastic | [Kibana#262561](https://github.com/elastic/kibana/issues/262561) | ML Explorer false empty state |
-| 34 | HashiCorp | [azurerm#13255](https://github.com/hashicorp/terraform-provider-azurerm/issues/13255) | App Insights source-map URI |
-
-CLA likely required. Details: [`drafts/`](./drafts/README.md).
-
-**Batch 8 submitted** (5/5 — **avenx#655 merged same day**):
+**Batch 8 submitted** (5/5):
 
 | # | PR | Status |
 |---|-----|--------|
 | 25 | [synapse-core#1041](https://github.com/Synapse-bridgez/synapse-core/pull/1041) | Open |
-| 26 | [Nevo#1004](https://github.com/Web3Novalabs/Nevo/pull/1004) | Open |
+| 26 | [Nevo#1004](https://github.com/Web3Novalabs/Nevo/pull/1004) | **Merged** |
 | 27 | [triageiq#26](https://github.com/SakethSumanBathini/triageiq/pull/26) | Open |
 | 28 | [triageiq#27](https://github.com/SakethSumanBathini/triageiq/pull/27) | Open |
 | 29 | [avenx-js#655](https://github.com/Avenx-JS/avenx-js/pull/655) | **Merged** |
@@ -68,7 +61,7 @@ CLA likely required. Details: [`drafts/`](./drafts/README.md).
 | 23 | [osk-frontend#291](https://github.com/Open-Source-Kigali/osk-frontend/pull/291) | Open |
 | 24 | nl6#343 | Skipped |
 
-Merged external: **8 / 100**.
+Merged external: **9 / 100**. Details: [`drafts/`](./drafts/README.md).
 
 ## Portfolio polish (owned repos)
 
@@ -83,7 +76,7 @@ Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
 
 ## Daily loop
 
-1. Submit Batch 9 (`bash scripts/submit-batch9-prs.sh`); sign CLAs when prompted. Then pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+1. Watch Batch 8–9 reviews; ask for Batch 10 when ready. Pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
 2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
 3. Filter issues: labeled, recently touched, not already claimed, maintainer active.
 4. Comment “I’d like to take this” → wait for a nod when the project expects it.
