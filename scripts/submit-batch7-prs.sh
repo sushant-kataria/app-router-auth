@@ -2,31 +2,19 @@
 # Batch 7 — higher-signal external PRs
 #   bash scripts/submit-batch7-prs.sh
 #
-# Windows/Git Bash: git clone + home-cache workdir + CRLF/NUL text matching.
+# Status: 4/5 submitted (nl6#343 skipped). Synapse#1040, c-text#25, triageiq#25, osk#291 open.
+# Windows: relative git clone in workdir + python3/python/py shim + textio bootstrap.
 set -euo pipefail
 
 USER_LOGIN="${GITHUB_USER:-sushant-kataria}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-_uname="$(uname -s 2>/dev/null || echo unknown)"
-if [[ -n "${LOCALAPPDATA:-}" || "$_uname" == MINGW* || "$_uname" == MSYS* || "$_uname" == CYGWIN* ]]; then
-  WORKDIR="${GRANTPATH_WORKDIR:-$HOME/.cache/grantpath-batch7-$$}"
-else
-  WORKDIR="${GRANTPATH_WORKDIR:-${TMPDIR:-/tmp}/grantpath-batch7-$$}"
-fi
-mkdir -p "$WORKDIR"
-trap 'rm -rf "$WORKDIR"' EXIT
+# shellcheck source=grantpath-submit-lib.sh
+source "$SCRIPT_DIR/grantpath-submit-lib.sh"
 
 need() { command -v "$1" >/dev/null || { echo "Missing: $1"; exit 1; }; }
-need git; need gh; need python3
-
-run_python_patch() {
-  {
-    cat "$SCRIPT_DIR/textio_bootstrap.py"
-    echo
-    cat
-  } | python3 -
-}
+need git; need gh
+grantpath_resolve_python
+grantpath_init_workdir "batch7"
 
 ACTIVE="$(gh api user --jq .login 2>/dev/null || true)"
 if [[ -z "$ACTIVE" || "$ACTIVE" != "$USER_LOGIN" ]]; then
@@ -34,52 +22,7 @@ if [[ -z "$ACTIVE" || "$ACTIVE" != "$USER_LOGIN" ]]; then
   exit 1
 fi
 
-claim_issue() {
-  local repo="$1" number="$2" body="$3"
-  if gh api "repos/$repo/issues/$number/comments" --jq '.[].user.login' | grep -qx "$USER_LOGIN"; then
-    echo "    (already commented on $repo#$number)"
-    return 0
-  fi
-  gh issue comment "$number" --repo "$repo" --body "$body" >/dev/null
-  echo "    claimed $repo#$number"
-}
-
-skip_if_assigned_elsewhere() {
-  local repo="$1" number="$2"
-  local assignee state
-  state="$(gh api "repos/$repo/issues/$number" --jq .state)"
-  if [[ "$state" == "closed" ]]; then
-    echo "SKIP $repo#$number — issue is closed"
-    return 1
-  fi
-  assignee="$(gh api "repos/$repo/issues/$number" --jq '.assignees[0].login // empty')"
-  if [[ -n "$assignee" && "$assignee" != "$USER_LOGIN" ]]; then
-    echo "SKIP $repo#$number — already assigned to @$assignee"
-    return 1
-  fi
-  return 0
-}
-
-fork_and_clone() {
-  local upstream="$1"
-  local name="${upstream##*/}"
-  echo "==> Forking $upstream"
-  gh repo fork "$upstream" --remote=false --default-branch-only 2>/dev/null || true
-  for _ in $(seq 1 10); do
-    gh api "repos/$USER_LOGIN/$name" --jq .full_name >/dev/null 2>&1 && break
-    sleep 2
-  done
-  rm -rf "$WORKDIR/$name"
-  git clone --depth=50 "https://github.com/$USER_LOGIN/$name.git" "$WORKDIR/$name"
-  (
-    cd "$WORKDIR/$name"
-    git remote add upstream "https://github.com/$upstream.git" 2>/dev/null || true
-    git fetch upstream
-  )
-}
-
 echo "==> Authenticated as $ACTIVE"
-echo "==> Workdir: $WORKDIR"
 
 ########################################
 # 20) Synapse #1012

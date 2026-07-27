@@ -32,21 +32,17 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
-**Next: Batch 7** — run locally:
+**Batch 7 submitted** (4/5 — nl6 skipped):
 
-```bash
-bash scripts/submit-batch7-prs.sh
-```
+| # | PR | Status |
+|---|-----|--------|
+| 20 | [synapse-core#1040](https://github.com/Synapse-bridgez/synapse-core/pull/1040) | Open |
+| 21 | [c-text-editor#25](https://github.com/andrewthecodertx/c-text-editor/pull/25) | Open |
+| 22 | [triageiq#25](https://github.com/SakethSumanBathini/triageiq/pull/25) | Open |
+| 23 | [osk-frontend#291](https://github.com/Open-Source-Kigali/osk-frontend/pull/291) | Open |
+| 24 | nl6#343 | Skipped |
 
-| # | Target | Kind |
-|---|--------|------|
-| 20 | synapse-core#1012 | xtask seed DATABASE_URL never expanded |
-| 21 | c-text-editor#8+#17 | Undo leak + implement editor_actions |
-| 22 | triageiq#22 | CORS allowlist actually enforced |
-| 23 | osk-frontend#279 | Footer route fixes |
-| 24 | nl6#343 | Reliable attestation verify docs |
-
-Merged external: **7 / 100**.
+Merged external: **7 / 100**. Watch reviews; ask for Batch 8 when ready.
 
 **Batch 6 submitted** (higher-impact code/packaging):
 

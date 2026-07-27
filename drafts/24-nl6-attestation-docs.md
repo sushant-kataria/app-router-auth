@@ -1,5 +1,7 @@
 # PR 24 — nl6: fix RELEASING attestation verify docs
 
+**Status:** **SKIPPED** in Batch 7 submit (user chose not to open; prior nl6#345 was also closed without merge).
+
 **Issue:** https://github.com/labmonkeys-space/nl6/issues/343  
 **Impact:** Release verification docs currently look broken (`gh attestation verify` silent on gh 2.96)  
 **File:** `RELEASING.md`
