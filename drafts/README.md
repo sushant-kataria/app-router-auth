@@ -1,21 +1,19 @@
 # Draft PR pack
 
 ## Status
-- Merged external: **7 / 100** (7%)
-- **~12 open** external PRs in flight
-- **Batch 8 ready** — run locally: `bash scripts/submit-batch8-prs.sh`
+- Merged external: **8 / 100** (8%)
+- **Batch 8 submitted** (5/5) — **avenx#655 already merged**
+- Closest: [E-vara#237](https://github.com/SHAURYASANYAL3/E-vara/pull/237) **APPROVED**
 
-## Batch 8 — ready to submit
+## Batch 8 — submitted
 
-| # | Issue | Change |
-|---|-------|--------|
-| 25 | [synapse-core#1011](https://github.com/Synapse-bridgez/synapse-core/issues/1011) | cliff.toml commit-hash → GitHub URL |
-| 26 | [Nevo#971](https://github.com/Web3Novalabs/Nevo/issues/971) | root `.editorconfig` |
-| 27 | [triageiq#14](https://github.com/SakethSumanBathini/triageiq/issues/14) | Clear button on email form |
-| 28 | [triageiq#15](https://github.com/SakethSumanBathini/triageiq/issues/15) | Dashboard empty state |
-| 29 | [avenx-js#639](https://github.com/Avenx-JS/avenx-js/issues/639) | Warn on undefined guard return |
-
-Draft notes: `25`–`29`. Submit: `bash scripts/submit-batch8-prs.sh` (needs `gh auth` as `sushant-kataria`).
+| # | Issue → PR | Status |
+|---|------------|--------|
+| 25 | [synapse-core#1041](https://github.com/Synapse-bridgez/synapse-core/pull/1041) | Open — cliff.toml commit URLs |
+| 26 | [Nevo#1004](https://github.com/Web3Novalabs/Nevo/pull/1004) | Open — root `.editorconfig` |
+| 27 | [triageiq#26](https://github.com/SakethSumanBathini/triageiq/pull/26) | Open — Clear email form button |
+| 28 | [triageiq#27](https://github.com/SakethSumanBathini/triageiq/pull/27) | Open — Dashboard empty state |
+| 29 | [avenx-js#655](https://github.com/Avenx-JS/avenx-js/pull/655) | **Merged** — warn on undefined guard return |
 
 ## Batch 7 — submitted
 

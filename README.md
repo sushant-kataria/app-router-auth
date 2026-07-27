@@ -32,20 +32,15 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
-**Batch 8 ready** — submit locally:
+**Batch 8 submitted** (5/5 — **avenx#655 merged same day**):
 
-```bash
-gh auth login   # sushant-kataria
-bash scripts/submit-batch8-prs.sh
-```
-
-| # | Issue | Change |
-|---|-------|--------|
-| 25 | [synapse-core#1011](https://github.com/Synapse-bridgez/synapse-core/issues/1011) | cliff.toml commit URLs |
-| 26 | [Nevo#971](https://github.com/Web3Novalabs/Nevo/issues/971) | root `.editorconfig` |
-| 27 | [triageiq#14](https://github.com/SakethSumanBathini/triageiq/issues/14) | Clear email form button |
-| 28 | [triageiq#15](https://github.com/SakethSumanBathini/triageiq/issues/15) | Dashboard empty state |
-| 29 | [avenx-js#639](https://github.com/Avenx-JS/avenx-js/issues/639) | Warn on undefined guard return |
+| # | PR | Status |
+|---|-----|--------|
+| 25 | [synapse-core#1041](https://github.com/Synapse-bridgez/synapse-core/pull/1041) | Open |
+| 26 | [Nevo#1004](https://github.com/Web3Novalabs/Nevo/pull/1004) | Open |
+| 27 | [triageiq#26](https://github.com/SakethSumanBathini/triageiq/pull/26) | Open |
+| 28 | [triageiq#27](https://github.com/SakethSumanBathini/triageiq/pull/27) | Open |
+| 29 | [avenx-js#655](https://github.com/Avenx-JS/avenx-js/pull/655) | **Merged** |
 
 **Batch 7 submitted** (4/5 — nl6 skipped):
 
@@ -57,7 +52,7 @@ bash scripts/submit-batch8-prs.sh
 | 23 | [osk-frontend#291](https://github.com/Open-Source-Kigali/osk-frontend/pull/291) | Open |
 | 24 | nl6#343 | Skipped |
 
-Merged external: **7 / 100**. Details: [`drafts/`](./drafts/README.md).
+Merged external: **8 / 100**. Details: [`drafts/`](./drafts/README.md). Ask for Batch 9 when ready.
 
 ## Portfolio polish (owned repos)
 
@@ -72,7 +67,7 @@ Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
 
 ## Daily loop
 
-1. Submit Batch 8 (`bash scripts/submit-batch8-prs.sh`), then pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+1. Watch Batch 7–8 reviews; ask for Batch 9 when ready. Pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
 2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
 3. Filter issues: labeled, recently touched, not already claimed, maintainer active.
 4. Comment “I’d like to take this” → wait for a nod when the project expects it.
