@@ -77,11 +77,12 @@ fork_and_clone() {
     gh api "repos/$USER_LOGIN/$name" --jq .full_name >/dev/null 2>&1 && break
     sleep 2
   done
-  rm -rf "$WORKDIR/$name"
-  # git clone is more reliable than `gh repo clone` on Windows/MSYS pathing.
-  git clone --depth=50 "https://github.com/$USER_LOGIN/$name.git" "$WORKDIR/$name"
+  # Relative clone inside WORKDIR (Windows/MSYS-safe).
   (
-    cd "$WORKDIR/$name"
+    cd "$WORKDIR"
+    rm -rf "$name"
+    git clone --depth=50 "https://github.com/$USER_LOGIN/$name.git" "$name"
+    cd "$name"
     git remote add upstream "https://github.com/$upstream.git" 2>/dev/null || true
     git fetch upstream
   )
