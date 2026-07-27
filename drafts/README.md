@@ -4,6 +4,20 @@
 - Merged external: **9 / 100** (9%)
 - Closest: [E-vara#237](https://github.com/SHAURYASANYAL3/E-vara/pull/237) **APPROVED**
 
+## Batch 10 — ready to submit
+
+| # | Target | Notes |
+|---|--------|-------|
+| 35 | [json.ts#1](https://github.com/abatef/json.ts/issues/1) | Scanner hang on unrecognized char |
+| 36 | [json.ts#2](https://github.com/abatef/json.ts/issues/2) | Scanner hang on unterminated string |
+| 37 | [avenx-js#647](https://github.com/Avenx-JS/avenx-js/issues/647) | Docs: `data-ax-class` |
+| 38 | [avenx-js#638](https://github.com/Avenx-JS/avenx-js/issues/638) | Warn on multiple `<state>` tags |
+| 39 | [sharibo#111](https://github.com/crackedstudio/sharibo/issues/111) | Favicon + social meta |
+
+```bash
+bash scripts/submit-batch10-prs.sh
+```
+
 ## Batch 9 — submitted (4/5; Kibana not opened)
 
 | # | Company | PR | Status |

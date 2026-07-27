@@ -32,6 +32,16 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
+**Batch 10 ready** (submit with `bash scripts/submit-batch10-prs.sh`):
+
+| # | Target | Notes |
+|---|--------|-------|
+| 35 | [json.ts#1](https://github.com/abatef/json.ts/issues/1) | Scanner hang on unrecognized char |
+| 36 | [json.ts#2](https://github.com/abatef/json.ts/issues/2) | Scanner hang on unterminated string |
+| 37 | [avenx-js#647](https://github.com/Avenx-JS/avenx-js/issues/647) | Docs: `data-ax-class` |
+| 38 | [avenx-js#638](https://github.com/Avenx-JS/avenx-js/issues/638) | Warn on multiple `<state>` tags |
+| 39 | [sharibo#111](https://github.com/crackedstudio/sharibo/issues/111) | Favicon + social meta |
+
 **Batch 9 submitted** (4/5 — Kibana not opened):
 
 | # | PR | Status |
@@ -76,7 +86,7 @@ Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
 
 ## Daily loop
 
-1. Watch Batch 8–9 reviews; ask for Batch 10 when ready. Pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+1. Submit Batch 10 (`bash scripts/submit-batch10-prs.sh`); watch Batch 8–10 reviews. Pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
 2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
 3. Filter issues: labeled, recently touched, not already claimed, maintainer active.
 4. Comment “I’d like to take this” → wait for a nod when the project expects it.
