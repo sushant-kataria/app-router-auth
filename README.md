@@ -32,6 +32,22 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
+**Batch 9 ready** — major-company / high-impact (Microsoft, HashiCorp, Elastic):
+
+```bash
+bash scripts/submit-batch9-prs.sh   # already gh auth as sushant-kataria
+```
+
+| # | Company | Issue | Impact |
+|---|---------|-------|--------|
+| 30 | Microsoft | [PowerToys#46401](https://github.com/microsoft/PowerToys/issues/46401) | P0 ProviderContext contamination |
+| 31 | Microsoft | [PowerToys#49183](https://github.com/microsoft/PowerToys/issues/49183) | Indexer Peek never opens |
+| 32 | HashiCorp | [Vault#31852](https://github.com/hashicorp/vault/issues/31852) | UI scroll locks after delete |
+| 33 | Elastic | [Kibana#262561](https://github.com/elastic/kibana/issues/262561) | ML Explorer false empty state |
+| 34 | HashiCorp | [azurerm#13255](https://github.com/hashicorp/terraform-provider-azurerm/issues/13255) | App Insights source-map URI |
+
+CLA likely required. Details: [`drafts/`](./drafts/README.md).
+
 **Batch 8 submitted** (5/5 — **avenx#655 merged same day**):
 
 | # | PR | Status |
@@ -52,7 +68,7 @@ Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 | 23 | [osk-frontend#291](https://github.com/Open-Source-Kigali/osk-frontend/pull/291) | Open |
 | 24 | nl6#343 | Skipped |
 
-Merged external: **8 / 100**. Details: [`drafts/`](./drafts/README.md). Ask for Batch 9 when ready.
+Merged external: **8 / 100**.
 
 ## Portfolio polish (owned repos)
 
@@ -67,7 +83,7 @@ Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
 
 ## Daily loop
 
-1. Watch Batch 7–8 reviews; ask for Batch 9 when ready. Pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+1. Submit Batch 9 (`bash scripts/submit-batch9-prs.sh`); sign CLAs when prompted. Then pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
 2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
 3. Filter issues: labeled, recently touched, not already claimed, maintainer active.
 4. Comment “I’d like to take this” → wait for a nod when the project expects it.
