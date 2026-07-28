@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Grantpath
 
-## Getting Started
+Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 months Claude Max 20x) and OpenAI’s **Codex for Open Source** (6 months ChatGPT Pro + Codex) when you have **no prior OSS history**.
 
-First, run the development server:
+> Clearing a demo repo does not qualify you. These programs reward real contribution impact.
+
+## The strategy (do this)
+
+| Priority | Action | Why |
+|----------|--------|-----|
+| **1 — Speed path** | Land **100 merged PRs** in repos **you do not own** (last 12 months) | Official Anthropic **Active contributors** track |
+| **2 — Parallel** | Maintain this public MIT project with a clear README + ongoing commits | Gives OpenAI a primary-maintainer story |
+| **3 — Apply** | Anthropic at ~100 external merges; OpenAI once the maintainer story is real | Both programs accept rolling applications |
+
+**Do not** chase: fake stars, download bots, or empty “critical infrastructure” claims. That burns the application.
+
+## Official links
+
+- Anthropic: [claude.com/open-source-max](https://claude.com/open-source-max)
+- OpenAI: [openai.com/form/codex-for-oss](https://openai.com/form/codex-for-oss/)
+
+### Anthropic tracks (summary)
+
+1. Maintainer/library: 500+ dependent repos **or** 100+ dependent packages **or** 200k+ monthly downloads  
+2. Core contributor on major foundation projects  
+3. **Active contributor: 100+ merged PRs to repos you don’t own (12 months)** ← your main target  
+4. Community builder: 20+ unique external contributors on one of your repos  
+5. Critical infra: OpenSSF criticality ≥ 0.4  
+6. Soft: apply anyway if the ecosystem quietly depends on your work  
+
+## Start here (drafted PRs)
+
+Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
+
+Merged external: **15 / 100**.
+
+**Batch 11 submitted** (Synapse #1048 already merged):
+
+| # | PR | Status |
+|---|----|--------|
+| 40 | [umami#4413](https://github.com/umami-software/umami/pull/4413) | Open |
+| 41 | [synapse#1048](https://github.com/Synapse-bridgez/synapse-core/pull/1048) | **Merged** |
+| 42 | [osk#294](https://github.com/Open-Source-Kigali/osk-frontend/pull/294) | Open |
+| 43 | [osk#295](https://github.com/Open-Source-Kigali/osk-frontend/pull/295) | Open |
+| 44 | [midday#894](https://github.com/midday-ai/midday/pull/894) | Open |
+
+Active open + merged: [`drafts/README.md`](./drafts/README.md).
+
+## Portfolio polish (owned repos)
+
+Cloud agents cannot push to your other repos. To make owned projects presentable (READMEs, env examples, finish hushvoice stub):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+gh auth login   # sushant-kataria
+bash scripts/polish-owned-repos.sh
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Daily loop
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Verify then submit Batch 11 (`bash scripts/verify-batch11.sh` → `bash scripts/submit-batch11-prs.sh`). Prefer startups; skip bigcos and skip piling on avenx.
+2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
+3. Filter issues: labeled, recently touched, not already claimed, maintainer active. Claim first; follow PR templates; include repro/tests on larger repos.
+4. Comment “I’d like to take this” → wait for a nod when the project expects it.
+5. One concern per PR. Respond to review the same day when you can.
+6. Log the merge in [`data/progress.json`](./data/progress.json).
 
-## Learn More
+## Commands
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev          # local Grantpath site
+npm run count-prs    # count merged external PRs (last 12 months)
+npm run progress     # refresh data/progress.json from GitHub Search API
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Optional: set `GITHUB_TOKEN` (or `GH_TOKEN`) for higher API rate limits.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+GITHUB_TOKEN=ghp_... npm run count-prs
+```
 
-## Deploy on Vercel
+## Apply packets
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [`apply/anthropic-draft.md`](./apply/anthropic-draft.md)
+- [`apply/openai-draft.md`](./apply/openai-draft.md)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Fill these only with **true** metrics from `npm run count-prs`.
+
+## What “as soon as possible” really means
+
+With no history, the bottleneck is **merged external PR volume**, not rewriting this repository. Treat contribution like a job: several small, mergeable PRs in flight across a few active repos. When `count-prs` shows ≥100, submit Anthropic immediately. Use this repo’s maintainer story for OpenAI once it is more than a blank template.
+
+## License
+
+MIT

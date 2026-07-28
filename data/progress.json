@@ -1,0 +1,20 @@
+{
+  "githubUsername": "sushant-kataria",
+  "goal": {
+    "anthropicMergedExternalPrs": 100,
+    "openai": "primary-or-core-maintainer-of-public-used-project"
+  },
+  "mergedExternalPrs": 15,
+  "applications": {
+    "anthropic": {
+      "status": "not-ready",
+      "url": "https://claude.com/open-source-max"
+    },
+    "openai": {
+      "status": "early-apply-possible-if-maintainer-story-strong",
+      "url": "https://openai.com/form/codex-for-oss/"
+    }
+  },
+  "log": [],
+  "lastCountedAt": "2026-07-28T15:27:53.180Z"
+}

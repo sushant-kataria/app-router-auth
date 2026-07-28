@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --ink: #0b1f33;
+  --paper: #eef3f8;
+  --signal: #0077c8;
+  --flare: #ff6b35;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--ink);
+  background-color: var(--paper);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--flare) 35%, white);
+}
