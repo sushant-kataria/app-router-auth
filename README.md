@@ -32,9 +32,19 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
-Merged external: **11 / 100**. Active open + merged list: [`drafts/README.md`](./drafts/README.md).
+Merged external: **12 / 100**.
 
-**Still open (high signal):** [Vault#32050](https://github.com/hashicorp/vault/pull/32050), [azurerm#32879](https://github.com/hashicorp/terraform-provider-azurerm/pull/32879), [E-vara#237](https://github.com/SHAURYASANYAL3/E-vara/pull/237) (approved).
+**Batch 11 ready** (startups only — no bigcos; `bash scripts/submit-batch11-prs.sh`):
+
+| # | Startup | Target |
+|---|---------|--------|
+| 40 | Avenx.js | [#664](https://github.com/Avenx-JS/avenx-js/issues/664) StateFactory docs |
+| 41 | Avenx.js | [#663](https://github.com/Avenx-JS/avenx-js/issues/663) setRoute docs |
+| 42 | Open Source Kigali | [#253](https://github.com/Open-Source-Kigali/osk-frontend/issues/253) Suspense Loader |
+| 43 | Open Source Kigali | [#254](https://github.com/Open-Source-Kigali/osk-frontend/issues/254) hamburger aria-label |
+| 44 | Midday | [#785](https://github.com/midday-ai/midday/issues/785) README AGPL wording |
+
+Active open + merged: [`drafts/README.md`](./drafts/README.md).
 
 ## Portfolio polish (owned repos)
 
@@ -49,9 +59,9 @@ Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
 
 ## Daily loop
 
-1. Watch open PRs; ask for a new batch when ready. Pick from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+1. Submit Batch 11 (`bash scripts/submit-batch11-prs.sh`); prefer **startups / mid-size** repos that merge community PRs. Avoid bigcos that reject AI-looking PRs.
 2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
-3. Filter issues: labeled, recently touched, not already claimed, maintainer active. Claim first; follow PR templates; include repro/tests on large repos.
+3. Filter issues: labeled, recently touched, not already claimed, maintainer active. Claim first; follow PR templates; include repro/tests on larger repos.
 4. Comment “I’d like to take this” → wait for a nod when the project expects it.
 5. One concern per PR. Respond to review the same day when you can.
 6. Log the merge in [`data/progress.json`](./data/progress.json).
