@@ -34,15 +34,20 @@ Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
 Merged external: **12 / 100**.
 
-**Batch 11 ready** (startups only — no bigcos; `bash scripts/submit-batch11-prs.sh`):
+**Batch 11 ready** (startups only — no avenx / no bigcos):
 
 | # | Startup | Target |
 |---|---------|--------|
-| 40 | Avenx.js | [#664](https://github.com/Avenx-JS/avenx-js/issues/664) StateFactory docs |
-| 41 | Avenx.js | [#663](https://github.com/Avenx-JS/avenx-js/issues/663) setRoute docs |
+| 40 | Umami | [#4398](https://github.com/umami-software/umami/issues/4398) empty-dashboard Edit label |
+| 41 | Synapse | [#1002](https://github.com/Synapse-bridgez/synapse-core/issues/1002) tx search paren |
 | 42 | Open Source Kigali | [#253](https://github.com/Open-Source-Kigali/osk-frontend/issues/253) Suspense Loader |
 | 43 | Open Source Kigali | [#254](https://github.com/Open-Source-Kigali/osk-frontend/issues/254) hamburger aria-label |
 | 44 | Midday | [#785](https://github.com/midday-ai/midday/issues/785) README AGPL wording |
+
+```bash
+bash scripts/verify-batch11.sh    # test patches first
+bash scripts/submit-batch11-prs.sh
+```
 
 Active open + merged: [`drafts/README.md`](./drafts/README.md).
 
@@ -59,7 +64,7 @@ Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
 
 ## Daily loop
 
-1. Submit Batch 11 (`bash scripts/submit-batch11-prs.sh`); prefer **startups / mid-size** repos that merge community PRs. Avoid bigcos that reject AI-looking PRs.
+1. Verify then submit Batch 11 (`bash scripts/verify-batch11.sh` → `bash scripts/submit-batch11-prs.sh`). Prefer startups; skip bigcos and skip piling on avenx.
 2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
 3. Filter issues: labeled, recently touched, not already claimed, maintainer active. Claim first; follow PR templates; include repro/tests on larger repos.
 4. Comment “I’d like to take this” → wait for a nod when the project expects it.

@@ -4,19 +4,22 @@
 - Merged external: **12 / 100** (12%)
 - Closest: [E-vara#237](https://github.com/SHAURYASANYAL3/E-vara/pull/237) **APPROVED**
 
-## Batch 11 — ready (startups only; no bigcos)
+## Batch 11 — ready (startups only; no avenx / no bigcos)
 
 | # | Startup | Target | Notes |
 |---|---------|--------|-------|
-| 40 | Avenx.js | [#664](https://github.com/Avenx-JS/avenx-js/issues/664) | Docs: StateFactory `onChange` |
-| 41 | Avenx.js | [#663](https://github.com/Avenx-JS/avenx-js/issues/663) | Docs: `setRoute` mock shape |
+| 40 | Umami | [#4398](https://github.com/umami-software/umami/issues/4398) | Header label Edit matches empty copy |
+| 41 | Synapse | [#1002](https://github.com/Synapse-bridgez/synapse-core/issues/1002) | Close paren in `tx search` summary |
 | 42 | Open Source Kigali | [#253](https://github.com/Open-Source-Kigali/osk-frontend/issues/253) | Suspense → `<Loader />` |
 | 43 | Open Source Kigali | [#254](https://github.com/Open-Source-Kigali/osk-frontend/issues/254) | Dynamic hamburger aria-label |
 | 44 | Midday | [#785](https://github.com/midday-ai/midday/issues/785) | README AGPL wording |
 
 ```bash
+bash scripts/verify-batch11.sh   # apply + test patches first
 bash scripts/submit-batch11-prs.sh
 ```
+
+**Verified:** umami patch asserts; synapse format + `rustc` snippet; osk `eslint` + production `build`; midday README vs `LICENSE`.
 
 ## Active open
 
@@ -32,16 +35,5 @@ bash scripts/submit-batch11-prs.sh
 | [sanjeevani-mobile-apps#10](https://github.com/Sanjeevaniai-in/sanjeevani-mobile-apps/pull/10) | Open |
 | [sanjeevani-landing-page#7](https://github.com/Sanjeevaniai-in/sanjeevani-landing-page/pull/7) | Open |
 | [TSIA2Math#33](https://github.com/jd-oviedo/TSIA2Math/pull/33) | Open |
-
-## Recently merged
-
-| PR | Notes |
-|----|-------|
-| [osk-frontend#290](https://github.com/Open-Source-Kigali/osk-frontend/pull/290) | Footer logo alt |
-| [avenx-js#659](https://github.com/Avenx-JS/avenx-js/pull/659) | Multiple `<state>` warn |
-| [avenx-js#658](https://github.com/Avenx-JS/avenx-js/pull/658) | `data-ax-class` docs |
-| [Nevo#1004](https://github.com/Web3Novalabs/Nevo/pull/1004) | `.editorconfig` |
-| [avenx-js#655](https://github.com/Avenx-JS/avenx-js/pull/655) | Guard undefined warn |
-| (+7 earlier) | See `npm run count-prs` |
 
 After merges: `npm run count-prs` / `npm run progress`

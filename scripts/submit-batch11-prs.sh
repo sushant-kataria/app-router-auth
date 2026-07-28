@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
-# Batch 11 — recent startups / mid-size OSS (no bigcos)
+# Batch 11 — startups only (no avenx, no bigcos)
 #   bash scripts/submit-batch11-prs.sh
 #
 # Targets:
-#   40) Avenx-JS/avenx-js#664 — document StateFactory options / onChange
-#   41) Avenx-JS/avenx-js#663 — document setRoute mock route shape
+#   40) umami-software/umami#4398 — header Edit label matches empty-dashboard copy
+#   41) Synapse-bridgez/synapse-core#1002 — close paren in tx search summary
 #   42) Open-Source-Kigali/osk-frontend#253 — Suspense uses Loader
 #   43) Open-Source-Kigali/osk-frontend#254 — dynamic hamburger aria-label
-#   44) midday-ai/midday#785 — README license wording vs AGPL
+#   44) midday-ai/midday#785 — README AGPL wording
 #
-# Avoid major companies (MS/Hashi/etc.) — they reject AI-looking PRs.
-# Windows: grantpath-submit-lib.sh (relative clone + python shim + textio).
+# Verify first: bash scripts/verify-batch11.sh
 set -euo pipefail
 
 USER_LOGIN="${GITHUB_USER:-sushant-kataria}"
@@ -30,233 +29,142 @@ if [[ -z "$ACTIVE" || "$ACTIVE" != "$USER_LOGIN" ]]; then
 fi
 
 echo "==> Authenticated as $ACTIVE"
-echo "==> Batch 11: startups (avenx / osk / midday)"
+echo "==> Batch 11: startups (umami / synapse / osk / midday)"
 
 ########################################
-# 40) Avenx #664 — StateFactory onChange docs
+# 40) umami #4398
 ########################################
 echo ""
-echo "======== PR 40: Avenx-JS/avenx-js#664 ========"
-if skip_if_assigned_elsewhere "Avenx-JS/avenx-js" 664; then
-claim_issue "Avenx-JS/avenx-js" 664 "I'll take this — documenting \`StateFactory.create\` options, especially \`onChange\`, in the utils API reference."
-fork_and_clone "Avenx-JS/avenx-js"
+echo "======== PR 40: umami-software/umami#4398 ========"
+if skip_if_assigned_elsewhere "umami-software/umami" 4398; then
+claim_issue "umami-software/umami" 4398 "I'll take this — the empty dashboard copy says to click Edit, but the header button was hardcoded as Design. Switching the button to \`t(labels.edit)\`."
+fork_and_clone "umami-software/umami"
 (
-  cd "$WORKDIR/avenx-js"
-  DEFAULT="$(gh api repos/Avenx-JS/avenx-js --jq .default_branch)"
-  git checkout -B "docs/statefactory-onchange" "upstream/$DEFAULT"
+  cd "$WORKDIR/umami"
+  DEFAULT="$(gh api repos/umami-software/umami --jq .default_branch)"
+  git checkout -B "fix/dashboard-edit-label" "upstream/$DEFAULT"
   run_python_patch <<'PY'
 from pathlib import Path
-path = Path("docs/src/content/docs/api-reference/utils.md")
+path = Path("src/app/(main)/dashboard/DashboardViewHeader.tsx")
 text = path.read_text(encoding="utf-8")
-old = """Options supplied to `create()` are forwarded to the underlying `ProxyHandlerFactory`.
-
-```javascript
-const state = stateFactory.create(
-  {
-    count: 0,
-  },
-  {
-    onChange() {
-      console.log('State changed');
-    },
-  },
-);
-```
-
-## 7. `AvenxWatcher`"""
-new = """Options supplied to `create()` are forwarded to the underlying `ProxyHandlerFactory`.
-
-### `create()` options
-
-| Option | Type | Description |
-| ------ | ---- | ----------- |
-| `onChange` | `() => void` | Called after a reactive property is set or deleted (and after related mutating operations). Receives **no arguments**. |
-| `computedKeys` | `string[]` | Keys treated as computed properties (advanced; usually set by the component runtime). |
-| `getComputedValue` | `(key, receiver) => any` | Evaluator for computed keys (advanced). |
-| `instance` | `object` | Component instance used for fallback property lookups (advanced). |
-
-#### `onChange`
-
-Use `onChange` when you create standalone reactive state outside a component and need a hook whenever the proxy mutates:
-
-```javascript
-import { StateFactory } from 'avenx-core/runtime';
-
-const stateFactory = new StateFactory();
-
-const state = stateFactory.create(
-  {
-    count: 0,
-    user: { name: 'Avenx User' },
-  },
-  {
-    onChange() {
-      // Fires after set/delete on the proxy (and nested reactive objects).
-      console.log('State changed', state.count, state.user.name);
-    },
-  },
-);
-
-state.count++; // logs via onChange
-delete state.user; // logs via onChange
-```
-
-> **Note:** `onChange` is a zero-argument callback. For dependency-aware reactions with old/new values, prefer `AvenxWatcher` (below) or `component.watch()`.
-
-## 7. `AvenxWatcher`"""
-if "### `create()` options" in text:
+old = """      <LinkButton href={renderUrl('/dashboard/edit', false)}>
+        <IconLabel icon={<LayoutDashboard />}>Design</IconLabel>
+      </LinkButton>"""
+new = """      <LinkButton href={renderUrl('/dashboard/edit', false)}>
+        <IconLabel icon={<LayoutDashboard />}>{t(labels.edit)}</IconLabel>
+      </LinkButton>"""
+if "{t(labels.edit)}" in text and "Design</IconLabel>" not in text:
     print("already patched")
 elif old not in text:
-    raise SystemExit("StateFactory options insert block not found in utils.md")
+    raise SystemExit("DashboardViewHeader Design button block not found")
+elif "const { t, labels }" not in text:
+    raise SystemExit("expected useMessages() to provide labels")
 else:
     path.write_text(text.replace(old, new, 1), encoding="utf-8")
-    print("patched utils.md (StateFactory onChange)")
+    print("patched DashboardViewHeader.tsx")
 PY
-  git add docs/src/content/docs/api-reference/utils.md
+  git add "src/app/(main)/dashboard/DashboardViewHeader.tsx"
   if ! git diff --cached --quiet; then
     git commit -m "$(cat <<'EOF'
-docs: document StateFactory create() options and onChange
+fix(dashboard): use Edit label to match empty-state copy
 
-Expand the utils API reference with the options schema forwarded to
-ProxyHandlerFactory, focusing on the zero-arg onChange callback.
+Empty dashboard message tells users to click Edit, but the header
+button was hardcoded as Design. Use t(labels.edit) so the control
+matches the i18n empty-state string.
 
-Fixes #664
+Fixes #4398
 EOF
 )"
   fi
-  git push -u origin "docs/statefactory-onchange" --force-with-lease
-  if gh pr list --repo Avenx-JS/avenx-js --head "$USER_LOGIN:docs/statefactory-onchange" --state open --json number --jq 'length' | grep -qx 0; then
-    gh pr create --repo Avenx-JS/avenx-js \
-      --head "$USER_LOGIN:docs/statefactory-onchange" \
-      --title "docs: document StateFactory create() options and onChange" \
+  git push -u origin "fix/dashboard-edit-label" --force-with-lease
+  if gh pr list --repo umami-software/umami --head "$USER_LOGIN:fix/dashboard-edit-label" --state open --json number --jq 'length' | grep -qx 0; then
+    gh pr create --repo umami-software/umami \
+      --head "$USER_LOGIN:fix/dashboard-edit-label" \
+      --title "fix(dashboard): use Edit label to match empty-state copy" \
       --body "$(cat <<'EOF'
 ## Summary
-Documents `StateFactory.create(initialState, options)` — especially `options.onChange` (`() => void`) — in `docs/src/content/docs/api-reference/utils.md`, with a standalone example.
+`message.empty-dashboard` tells users to click **Edit**, but `DashboardViewHeader` rendered a hardcoded **Design** label. The button now uses `t(labels.edit)`.
 
-Fixes #664
+Fixes #4398
 
 ## Test plan
-- [ ] Docs section renders with the options table + example
-- [ ] Matches `ProxyHandlerFactory` JSDoc (`onChange` zero-arg)
+- [ ] Empty dashboard: header button label matches the empty-state “Edit” wording
+- [ ] Locale still resolves `label.edit`
+- [ ] `npm test` / typecheck for touched files
 EOF
 )"
   else
-    gh pr list --repo Avenx-JS/avenx-js --head "$USER_LOGIN:docs/statefactory-onchange" --state open
+    gh pr list --repo umami-software/umami --head "$USER_LOGIN:fix/dashboard-edit-label" --state open
   fi
 )
 fi
 
 ########################################
-# 41) Avenx #663 — setRoute docs
+# 41) synapse #1002
 ########################################
 echo ""
-echo "======== PR 41: Avenx-JS/avenx-js#663 ========"
-if skip_if_assigned_elsewhere "Avenx-JS/avenx-js" 663; then
-claim_issue "Avenx-JS/avenx-js" 663 "I'll take this — documenting the mocked \`route\` object shape for \`AvenxSandbox.setRoute\` in the testing guide."
-fork_and_clone "Avenx-JS/avenx-js"
+echo "======== PR 41: Synapse-bridgez/synapse-core#1002 ========"
+if skip_if_assigned_elsewhere "Synapse-bridgez/synapse-core" 1002; then
+claim_issue "Synapse-bridgez/synapse-core" 1002 "I'll take this — closing the parenthesis in the \`tx search\` summary format string."
+fork_and_clone "Synapse-bridgez/synapse-core"
 (
-  cd "$WORKDIR/avenx-js"
-  DEFAULT="$(gh api repos/Avenx-JS/avenx-js --jq .default_branch)"
-  git checkout -B "docs/setroute-mock-shape" "upstream/$DEFAULT"
+  cd "$WORKDIR/synapse-core"
+  DEFAULT="$(gh api repos/Synapse-bridgez/synapse-core --jq .default_branch)"
+  git checkout -B "fix/tx-search-summary-paren" "upstream/$DEFAULT"
   run_python_patch <<'PY'
 from pathlib import Path
-path = Path("docs/src/content/docs/api-reference/testing.md")
+path = Path("src/cli.rs")
 text = path.read_text(encoding="utf-8")
-old = """### `setRoute(route)`
-
-Mocks the current router state, useful for testing route-dependent components without a real router.
-
-**Parameters**
-
-- `route` (object): The route object to set as the current route.
-
-**Returns**
-
-- `AvenxSandbox`: The sandbox instance (chainable).
-
-### `waitForUpdate()`"""
-new = """### `setRoute(route)`
-
-Mocks the current router state, useful for testing route-dependent components without a real router.
-
-**Parameters**
-
-- `route` (object): The route object to set as the current route. Expected fields:
-
-| Field | Type | Description |
-| ----- | ---- | ----------- |
-| `hash` | `string` | Mocked URL path/hash (e.g. `'#/users'`). |
-| `page` | `string` | Active page/component name registered with the router. |
-| `params` | `object` | Route parameters available to the page (path params and any app-specific fields such as nested query data). |
-
-**Returns**
-
-- `AvenxSandbox`: The sandbox instance (chainable).
-
-**Example**
-
-```javascript
-sandbox.setRoute({
-  hash: '#/users',
-  page: 'users',
-  params: { id: '99' },
-});
-
-const { html } = sandbox.mount(UsersPage);
-```
-
-### `waitForUpdate()`"""
-if "| `hash` | `string` |" in text and "setRoute" in text:
-    # might already be partially there
-    if "Mocked URL path/hash" in text:
-        print("already patched")
-    elif old not in text:
-        raise SystemExit("setRoute block not found in testing.md")
-    else:
-        path.write_text(text.replace(old, new, 1), encoding="utf-8")
-        print("patched testing.md")
+# Source contains a Rust string escape \n (backslash + n), not a real newline.
+old = '"\\n✓ {} results (total: {}",'
+new = '"\\n✓ {} results (total: {})",'
+if new in text and old not in text:
+    print("already patched")
 elif old not in text:
-    raise SystemExit("setRoute block not found in testing.md")
+    raise SystemExit("tx search format string not found")
 else:
     path.write_text(text.replace(old, new, 1), encoding="utf-8")
-    print("patched testing.md (setRoute shape)")
+    final = path.read_text(encoding="utf-8")
+    if old in final or new not in final:
+        raise SystemExit("patch did not apply cleanly")
+    print("patched cli.rs tx search summary")
 PY
-  git add docs/src/content/docs/api-reference/testing.md
+  git add src/cli.rs
   if ! git diff --cached --quiet; then
     git commit -m "$(cat <<'EOF'
-docs: document AvenxSandbox.setRoute mock route shape
+fix(cli): close parenthesis in tx search summary
 
-Document hash/page/params fields and add a mount example so isolated
-route-dependent tests have a clear contract.
+The table-format summary printed `✓ N results (total: M` without a
+closing `)`. Match other list summaries.
 
-Fixes #663
+Fixes #1002
 EOF
 )"
   fi
-  git push -u origin "docs/setroute-mock-shape" --force-with-lease
-  if gh pr list --repo Avenx-JS/avenx-js --head "$USER_LOGIN:docs/setroute-mock-shape" --state open --json number --jq 'length' | grep -qx 0; then
-    gh pr create --repo Avenx-JS/avenx-js \
-      --head "$USER_LOGIN:docs/setroute-mock-shape" \
-      --title "docs: document AvenxSandbox.setRoute mock route shape" \
+  git push -u origin "fix/tx-search-summary-paren" --force-with-lease
+  if gh pr list --repo Synapse-bridgez/synapse-core --head "$USER_LOGIN:fix/tx-search-summary-paren" --state open --json number --jq 'length' | grep -qx 0; then
+    gh pr create --repo Synapse-bridgez/synapse-core \
+      --head "$USER_LOGIN:fix/tx-search-summary-paren" \
+      --title "fix(cli): close parenthesis in tx search summary" \
       --body "$(cat <<'EOF'
 ## Summary
-Documents the mocked `route` object for `setRoute` (`hash`, `page`, `params`) in the testing API guide, with an example matching unit tests.
+`tx search` (table format) used `"\n✓ {} results (total: {}"` without the closing `)`, so output looked like `✓ 5 results (total: 12`.
 
-Fixes #663
+Fixes #1002
 
 ## Test plan
-- [ ] Docs render correctly
-- [ ] Example aligns with `test/unit/mock.test.js` usage
+- [ ] Format string is `"\n✓ {} results (total: {})"`
+- [ ] Matches other summary lines in `src/cli.rs`
 EOF
 )"
   else
-    gh pr list --repo Avenx-JS/avenx-js --head "$USER_LOGIN:docs/setroute-mock-shape" --state open
+    gh pr list --repo Synapse-bridgez/synapse-core --head "$USER_LOGIN:fix/tx-search-summary-paren" --state open
   fi
 )
 fi
 
 ########################################
-# 42) OSK #253 — Suspense Loader
+# 42) OSK #253
 ########################################
 echo ""
 echo "======== PR 42: Open-Source-Kigali/osk-frontend#253 ========"
@@ -271,26 +179,20 @@ fork_and_clone "Open-Source-Kigali/osk-frontend"
 from pathlib import Path
 path = Path("src/App.tsx")
 text = path.read_text(encoding="utf-8")
-if "from \"./components/UI/Loader\"" in text or "from './components/UI/Loader'" in text:
-    print("Loader import already present")
-else:
+if 'import Loader from "./components/UI/Loader"' not in text:
     needle = 'import { lazy, Suspense } from "react";\n'
     if needle not in text:
-        raise SystemExit("react import block not found")
-    text = text.replace(
-        needle,
-        needle + 'import Loader from "./components/UI/Loader";\n',
-        1,
-    )
+        raise SystemExit("react import not found")
+    text = text.replace(needle, needle + 'import Loader from "./components/UI/Loader";\n', 1)
 old = "<Suspense fallback={<div>Loading...</div>}>"
 new = "<Suspense fallback={<Loader />}>"
-if "fallback={<Loader" in text and "Loading..." not in text:
-    print("already patched fallback")
+if "fallback={<Loader" in text and "Loading..." not in text.split("Suspense")[1][:80]:
+    print("already patched")
 elif old not in text:
-    raise SystemExit("Suspense Loading... fallback not found")
+    raise SystemExit("Suspense Loading fallback not found")
 else:
     text = text.replace(old, new, 1)
-    print("patched App.tsx Suspense fallback")
+    print("patched App.tsx")
 path.write_text(text, encoding="utf-8")
 PY
   git add src/App.tsx
@@ -298,8 +200,8 @@ PY
     git commit -m "$(cat <<'EOF'
 fix: use Loader component for Suspense fallback
 
-Replace the plain "Loading..." text fallback with the shared Loader
-spinner for lazy-loaded routes.
+Replace plain "Loading..." text with the shared Loader spinner for
+lazy-loaded routes.
 
 Fixes #253
 EOF
@@ -312,13 +214,13 @@ EOF
       --title "fix: use Loader component for Suspense fallback" \
       --body "$(cat <<'EOF'
 ## Summary
-Lazy routes used a plain `<div>Loading...</div>` Suspense fallback. This switches to the shared `<Loader />` spinner.
+Lazy routes used `<div>Loading...</div>` as the Suspense fallback. This uses the shared `<Loader />` spinner.
 
 Fixes #253
 
 ## Test plan
-- [ ] Open `/partnersform` (lazy) — styled loader appears instead of raw text
-- [ ] `npm run lint` / `npm run build`
+- [ ] `/partnersform` shows styled Loader
+- [ ] `npm run lint` and `npm run build`
 EOF
 )"
   else
@@ -328,7 +230,7 @@ EOF
 fi
 
 ########################################
-# 43) OSK #254 — hamburger aria-label
+# 43) OSK #254
 ########################################
 echo ""
 echo "======== PR 43: Open-Source-Kigali/osk-frontend#254 ========"
@@ -351,15 +253,14 @@ elif old not in text:
     raise SystemExit("Toggle menu aria-label not found")
 else:
     path.write_text(text.replace(old, new, 1), encoding="utf-8")
-    print("patched MainNavigation.tsx aria-label")
+    print("patched MainNavigation.tsx")
 PY
   git add src/components/MainNavigation.tsx
   if ! git diff --cached --quiet; then
     git commit -m "$(cat <<'EOF'
 fix(a11y): dynamic aria-label for mobile menu button
 
-Announce Open vs Close navigation menu based on mobileOpen so screen
-readers match the hamburger/X icon state.
+Announce Open vs Close navigation menu based on mobileOpen.
 
 Fixes #254
 EOF
@@ -372,15 +273,15 @@ EOF
       --title "fix(a11y): dynamic aria-label for mobile menu button" \
       --body "$(cat <<'EOF'
 ## Summary
-The mobile menu button always announced "Toggle menu". It now uses:
+Mobile menu button now uses:
 - closed → `Open navigation menu`
 - open → `Close navigation menu`
 
 Fixes #254
 
 ## Test plan
-- [ ] Toggle mobile menu — `aria-label` updates with state
-- [ ] Visual behavior unchanged
+- [ ] Toggle mobile menu — aria-label updates
+- [ ] `npm run lint`
 EOF
 )"
   else
@@ -390,7 +291,7 @@ EOF
 fi
 
 ########################################
-# 44) Midday #785 — README license
+# 44) Midday #785
 ########################################
 echo ""
 echo "======== PR 44: midday-ai/midday#785 ========"
@@ -422,24 +323,20 @@ This project is licensed under the **[AGPL-3.0](https://opensource.org/licenses/
 AGPL-3.0 is an OSI-approved open-source license and does **not** restrict commercial use by itself. If you need a separate commercial / dual license (for example proprietary SaaS use without AGPL obligations), contact [engineer@midday.ai](mailto:engineer@midday.ai).
 
 By using this software, you agree to the terms of the license."""
-if "does **not** restrict commercial use" in text or "does not restrict commercial use" in text:
+if "does **not** restrict commercial use" in text:
     print("already patched")
 elif old not in text:
-    # try looser match
-    if "for non-commercial use" not in text:
-        raise SystemExit("README license non-commercial wording not found — may already be fixed")
-    raise SystemExit("README license block not found exactly — check formatting")
+    raise SystemExit("README license block not found")
 else:
     path.write_text(text.replace(old, new, 1), encoding="utf-8")
-    print("patched README.md license section")
+    print("patched README.md")
 PY
   git add README.md
   if ! git diff --cached --quiet; then
     git commit -m "$(cat <<'EOF'
 docs: align README license wording with AGPL-3.0
 
-The README said AGPL was "for non-commercial use", which contradicts
-the LICENSE file and AGPL terms. Clarify AGPL applies as written and
+Remove the incorrect "for non-commercial use" qualifier on AGPL and
 keep commercial dual-license contact separately.
 
 Fixes #785
@@ -453,18 +350,13 @@ EOF
       --title "docs: align README license wording with AGPL-3.0" \
       --body "$(cat <<'EOF'
 ## Summary
-The README License section said the project is AGPL-3.0 \"for non-commercial use\". That contradicts the `LICENSE` file (unmodified AGPL-3.0) and AGPL §10 (no further restrictions).
-
-This update:
-- States the project is AGPL-3.0 per `LICENSE`
-- Clarifies AGPL does not itself ban commercial use
-- Keeps the commercial/dual-license contact as a separate option
+README said AGPL was \"for non-commercial use\", which contradicts `LICENSE` and AGPL §10. Clarify AGPL terms and keep dual-license contact separate.
 
 Fixes #785
 
 ## Test plan
-- [ ] README License section no longer claims AGPL is non-commercial-only
-- [ ] Commercial contact email preserved
+- [ ] README no longer claims AGPL is non-commercial-only
+- [ ] Commercial contact preserved
 EOF
 )"
   else
@@ -474,5 +366,5 @@ EOF
 fi
 
 echo ""
-echo "Batch 11 done (startups)."
+echo "Batch 11 done."
 gh search prs --author "$USER_LOGIN" --state open --limit 30
