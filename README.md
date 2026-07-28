@@ -32,22 +32,17 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
-Merged external: **12 / 100**.
+Merged external: **15 / 100**.
 
-**Batch 11 ready** (startups only — no avenx / no bigcos):
+**Batch 11 submitted** (Synapse #1048 already merged):
 
-| # | Startup | Target |
-|---|---------|--------|
-| 40 | Umami | [#4398](https://github.com/umami-software/umami/issues/4398) empty-dashboard Edit label |
-| 41 | Synapse | [#1002](https://github.com/Synapse-bridgez/synapse-core/issues/1002) tx search paren |
-| 42 | Open Source Kigali | [#253](https://github.com/Open-Source-Kigali/osk-frontend/issues/253) Suspense Loader |
-| 43 | Open Source Kigali | [#254](https://github.com/Open-Source-Kigali/osk-frontend/issues/254) hamburger aria-label |
-| 44 | Midday | [#785](https://github.com/midday-ai/midday/issues/785) README AGPL wording |
-
-```bash
-bash scripts/verify-batch11.sh    # test patches first
-bash scripts/submit-batch11-prs.sh
-```
+| # | PR | Status |
+|---|----|--------|
+| 40 | [umami#4413](https://github.com/umami-software/umami/pull/4413) | Open |
+| 41 | [synapse#1048](https://github.com/Synapse-bridgez/synapse-core/pull/1048) | **Merged** |
+| 42 | [osk#294](https://github.com/Open-Source-Kigali/osk-frontend/pull/294) | Open |
+| 43 | [osk#295](https://github.com/Open-Source-Kigali/osk-frontend/pull/295) | Open |
+| 44 | [midday#894](https://github.com/midday-ai/midday/pull/894) | Open |
 
 Active open + merged: [`drafts/README.md`](./drafts/README.md).
 
