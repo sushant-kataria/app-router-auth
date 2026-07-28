@@ -32,46 +32,9 @@ Fastest **legitimate** path to Anthropic’s **Claude for Open Source** (6 month
 
 Ready-to-submit drafts live in [`drafts/`](./drafts/README.md).
 
-**Batch 10 ready** (submit with `bash scripts/submit-batch10-prs.sh`):
+Merged external: **11 / 100**. Active open + merged list: [`drafts/README.md`](./drafts/README.md).
 
-| # | Target | Notes |
-|---|--------|-------|
-| 35 | [json.ts#1](https://github.com/abatef/json.ts/issues/1) | Scanner hang on unrecognized char |
-| 36 | [json.ts#2](https://github.com/abatef/json.ts/issues/2) | Scanner hang on unterminated string |
-| 37 | [avenx-js#647](https://github.com/Avenx-JS/avenx-js/issues/647) | Docs: `data-ax-class` |
-| 38 | [avenx-js#638](https://github.com/Avenx-JS/avenx-js/issues/638) | Warn on multiple `<state>` tags |
-| 39 | [sharibo#111](https://github.com/crackedstudio/sharibo/issues/111) | Favicon + social meta |
-
-**Batch 9 submitted** (4/5 — Kibana not opened):
-
-| # | PR | Status |
-|---|-----|--------|
-| 30 | [PowerToys#49511](https://github.com/microsoft/PowerToys/pull/49511) | Open — CLA ✅ |
-| 31 | [PowerToys#49512](https://github.com/microsoft/PowerToys/pull/49512) | Open — CLA ✅ |
-| 32 | [Vault#32050](https://github.com/hashicorp/vault/pull/32050) | Open — CLA ✅ |
-| 34 | [azurerm#32879](https://github.com/hashicorp/terraform-provider-azurerm/pull/32879) | Open |
-
-**Batch 8 submitted** (5/5):
-
-| # | PR | Status |
-|---|-----|--------|
-| 25 | [synapse-core#1041](https://github.com/Synapse-bridgez/synapse-core/pull/1041) | Open |
-| 26 | [Nevo#1004](https://github.com/Web3Novalabs/Nevo/pull/1004) | **Merged** |
-| 27 | [triageiq#26](https://github.com/SakethSumanBathini/triageiq/pull/26) | Open |
-| 28 | [triageiq#27](https://github.com/SakethSumanBathini/triageiq/pull/27) | Open |
-| 29 | [avenx-js#655](https://github.com/Avenx-JS/avenx-js/pull/655) | **Merged** |
-
-**Batch 7 submitted** (4/5 — nl6 skipped):
-
-| # | PR | Status |
-|---|-----|--------|
-| 20 | [synapse-core#1040](https://github.com/Synapse-bridgez/synapse-core/pull/1040) | Open |
-| 21 | [c-text-editor#25](https://github.com/andrewthecodertx/c-text-editor/pull/25) | Open |
-| 22 | [triageiq#25](https://github.com/SakethSumanBathini/triageiq/pull/25) | Open |
-| 23 | [osk-frontend#291](https://github.com/Open-Source-Kigali/osk-frontend/pull/291) | Open |
-| 24 | nl6#343 | Skipped |
-
-Merged external: **9 / 100**. Details: [`drafts/`](./drafts/README.md).
+**Still open (high signal):** [Vault#32050](https://github.com/hashicorp/vault/pull/32050), [azurerm#32879](https://github.com/hashicorp/terraform-provider-azurerm/pull/32879), [E-vara#237](https://github.com/SHAURYASANYAL3/E-vara/pull/237) (approved).
 
 ## Portfolio polish (owned repos)
 
@@ -86,9 +49,9 @@ Details: [`portfolio-polish/README.md`](./portfolio-polish/README.md).
 
 ## Daily loop
 
-1. Submit Batch 10 (`bash scripts/submit-batch10-prs.sh`); watch Batch 8–10 reviews. Pick more from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
+1. Watch open PRs; ask for a new batch when ready. Pick from [`data/targets.json`](./data/targets.json) (or [goodfirstissue.dev](https://goodfirstissue.dev/) / [up-for-grabs.net](https://up-for-grabs.net/)).
 2. Prefer **real bug/behavior fixes** over typo-only PRs when both are available.
-3. Filter issues: labeled, recently touched, not already claimed, maintainer active.
+3. Filter issues: labeled, recently touched, not already claimed, maintainer active. Claim first; follow PR templates; include repro/tests on large repos.
 4. Comment “I’d like to take this” → wait for a nod when the project expects it.
 5. One concern per PR. Respond to review the same day when you can.
 6. Log the merge in [`data/progress.json`](./data/progress.json).

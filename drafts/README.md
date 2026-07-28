@@ -1,51 +1,43 @@
 # Draft PR pack
 
 ## Status
-- Merged external: **9 / 100** (9%)
+- Merged external: **11 / 100** (11%)
 - Closest: [E-vara#237](https://github.com/SHAURYASANYAL3/E-vara/pull/237) **APPROVED**
 
-## Batch 10 — ready to submit
+## Active open
 
-| # | Target | Notes |
-|---|--------|-------|
-| 35 | [json.ts#1](https://github.com/abatef/json.ts/issues/1) | Scanner hang on unrecognized char |
-| 36 | [json.ts#2](https://github.com/abatef/json.ts/issues/2) | Scanner hang on unterminated string |
-| 37 | [avenx-js#647](https://github.com/Avenx-JS/avenx-js/issues/647) | Docs: `data-ax-class` |
-| 38 | [avenx-js#638](https://github.com/Avenx-JS/avenx-js/issues/638) | Warn on multiple `<state>` tags |
-| 39 | [sharibo#111](https://github.com/crackedstudio/sharibo/issues/111) | Favicon + social meta |
+| PR | Status |
+|----|--------|
+| [E-vara#237](https://github.com/SHAURYASANYAL3/E-vara/pull/237) | **APPROVED** |
+| [Vault#32050](https://github.com/hashicorp/vault/pull/32050) | Open — CLA ✅ |
+| [azurerm#32879](https://github.com/hashicorp/terraform-provider-azurerm/pull/32879) | Open |
+| [synapse-core#1040](https://github.com/Synapse-bridgez/synapse-core/pull/1040) | Open |
+| [synapse-core#1041](https://github.com/Synapse-bridgez/synapse-core/pull/1041) | Open |
+| [triageiq#24](https://github.com/SakethSumanBathini/triageiq/pull/24) | Open |
+| [triageiq#25](https://github.com/SakethSumanBathini/triageiq/pull/25) | Open |
+| [triageiq#26](https://github.com/SakethSumanBathini/triageiq/pull/26) | Open |
+| [triageiq#27](https://github.com/SakethSumanBathini/triageiq/pull/27) | Open |
+| [osk-frontend#290](https://github.com/Open-Source-Kigali/osk-frontend/pull/290) | Open |
+| [osk-frontend#291](https://github.com/Open-Source-Kigali/osk-frontend/pull/291) | Open |
+| [sanjeevani-core-backend#17](https://github.com/Sanjeevaniai-in/sanjeevani-core-backend/pull/17) | Open |
+| [sanjeevani-mobile-apps#10](https://github.com/Sanjeevaniai-in/sanjeevani-mobile-apps/pull/10) | Open |
+| [sanjeevani-landing-page#7](https://github.com/Sanjeevaniai-in/sanjeevani-landing-page/pull/7) | Open |
+| [TSIA2Math#33](https://github.com/jd-oviedo/TSIA2Math/pull/33) | Open |
 
-```bash
-bash scripts/submit-batch10-prs.sh
-```
+## Recently merged
 
-## Batch 9 — submitted (4/5; Kibana not opened)
-
-| # | Company | PR | Status |
-|---|---------|-----|--------|
-| 30 | Microsoft | [PowerToys#49511](https://github.com/microsoft/PowerToys/pull/49511) | Open — CLA ✅, awaiting review |
-| 31 | Microsoft | [PowerToys#49512](https://github.com/microsoft/PowerToys/pull/49512) | Open — CLA ✅, awaiting review |
-| 32 | HashiCorp | [Vault#32050](https://github.com/hashicorp/vault/pull/32050) | Open — CLA ✅ |
-| 33 | Elastic | Kibana#262561 | **Not opened** (no PR found) |
-| 34 | HashiCorp | [azurerm#32879](https://github.com/hashicorp/terraform-provider-azurerm/pull/32879) | Open — awaiting review |
-
-## Batch 8 — submitted
-
-| # | Issue → PR | Status |
-|---|------------|--------|
-| 25 | [synapse-core#1041](https://github.com/Synapse-bridgez/synapse-core/pull/1041) | Open |
-| 26 | [Nevo#1004](https://github.com/Web3Novalabs/Nevo/pull/1004) | **Merged** |
-| 27 | [triageiq#26](https://github.com/SakethSumanBathini/triageiq/pull/26) | Open |
-| 28 | [triageiq#27](https://github.com/SakethSumanBathini/triageiq/pull/27) | Open |
-| 29 | [avenx-js#655](https://github.com/Avenx-JS/avenx-js/pull/655) | **Merged** |
-
-## Batch 7 — submitted
-
-| # | Issue → PR | Status |
-|---|------------|--------|
-| 20 | [synapse-core#1040](https://github.com/Synapse-bridgez/synapse-core/pull/1040) | Open |
-| 21 | [c-text-editor#25](https://github.com/andrewthecodertx/c-text-editor/pull/25) | Open |
-| 22 | [triageiq#25](https://github.com/SakethSumanBathini/triageiq/pull/25) | Open |
-| 23 | [osk-frontend#291](https://github.com/Open-Source-Kigali/osk-frontend/pull/291) | Open |
-| 24 | nl6#343 | **Skipped** |
+| PR | Notes |
+|----|-------|
+| [avenx-js#659](https://github.com/Avenx-JS/avenx-js/pull/659) | Multiple `<state>` warn |
+| [avenx-js#658](https://github.com/Avenx-JS/avenx-js/pull/658) | `data-ax-class` docs |
+| [Nevo#1004](https://github.com/Web3Novalabs/Nevo/pull/1004) | `.editorconfig` |
+| [avenx-js#655](https://github.com/Avenx-JS/avenx-js/pull/655) | Guard undefined warn |
+| [sharibo#128](https://github.com/crackedstudio/sharibo/pull/128) | Broken demo.gif |
+| [sharibo#127](https://github.com/crackedstudio/sharibo/pull/127) | Rename types |
+| [Nevo#988](https://github.com/Web3Novalabs/Nevo/pull/988) | PoolCard donor count |
+| [json.ts#17](https://github.com/abatef/json.ts/pull/17) | `childern` typo |
+| [avenx-js#625](https://github.com/Avenx-JS/avenx-js/pull/625) | `navigate(hash)` docs |
+| [cloche#26](https://github.com/escoffier-labs/cloche/pull/26) | Relicense MIT |
+| [first-contributions#121803](https://github.com/firstcontributions/first-contributions/pull/121803) | Contributors list |
 
 After merges: `npm run count-prs` / `npm run progress`
